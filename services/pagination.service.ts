@@ -21,8 +21,8 @@ export class PaginationService {
     )
   }
 
-  static isFirstPage = (currentPage: string) =>
-    +currentPage <= 1 || currentPage === undefined
+  static isFirstPage = (currentPage: number) =>
+    currentPage <= 1 || currentPage === undefined
 
   static isLastPage = (
     totalJokeList: Joke[],
@@ -42,10 +42,7 @@ export class PaginationService {
     totalJokeList: Joke[],
     pageNumber: number,
     pageSize: number
-  ) => {
-    debugger
-    PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
-  }
+  ) => PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
 
   static getNumberOfPages = (totalJokeList: Joke[]) =>
     Math.round(totalJokeList.length / CONST.JOKES_PER_PAGE)
