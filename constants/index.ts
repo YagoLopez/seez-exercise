@@ -11,7 +11,7 @@ export const ENDPOINTS = {
 export const CONST = {
   APP_TITLE: 'Seez Exercise',
   INPUT_SEARCH_PLACEHOLDER: 'Search Terms',
-  JOKES_PER_PAGE: 2,
+  JOKES_PER_PAGE: 10,
   JOKES_SEARCH_RESULT: 'Jokes Search Results',
   TITLE_INDEX: 'Chuck Norris Joke Search - Seez Exercise',
   PAGE_OUT_RANGE: 'No results found for this request',

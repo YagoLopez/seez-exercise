@@ -61,8 +61,7 @@ export default function Terms({ data, pageNumber }) {
   return (
     <Layout>
       <PageHead title={CONST.JOKES_SEARCH_RESULT} />
-      {/*<JokeList data={data} page={pageNumber} />*/}
-      <pre>{printJson(state)}</pre>
+      <JokeList list={state} />
 
       <div className={style.paginationCentered}>
         <div>

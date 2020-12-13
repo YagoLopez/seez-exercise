@@ -25,8 +25,8 @@ import '@rmwc/select/select.css'
 import '@material/select/dist/mdc.select.css'
 import '@material/menu/dist/mdc.menu.css'
 import '@material/menu-surface/dist/mdc.menu-surface.css'
+import '@material/elevation/dist/mdc.elevation.css'
 import '../public/styles/responsive.css'
-import { CONST } from '../constants'
 
 Router.events.on('routeChangeStart', (url) => {
   console.log(`Loading: ${url}`)
