@@ -2,7 +2,7 @@ import JokesRepository from '../../services/jokes.repository'
 import Joke from '../../models/Joke'
 import { GetServerSideProps } from 'next'
 import * as ErrorService from '../../services/errors.service'
-import React, { FormEvent, useState } from 'react'
+import React, { FormEvent, useEffect, useState } from 'react'
 import JokeErrorCmp from '../../components/JokeErrorCmp'
 import JokeErrorModel from '../../models/JokeError'
 import Layout from '../../components/layout/Layout'
@@ -39,19 +39,25 @@ export default function Random({ data, categories, category }) {
   const router = useRouter()
 
   const onSelectCategory = (evt: FormEvent) => {
-    setCategory((evt.currentTarget as HTMLSelectElement).value)
-    // setIsLoading(true)
+    const category = (evt.currentTarget as HTMLSelectElement).value
+    setCategory(category)
+    router.push(`/random/${category}`)
   }
-  console.log(selectedCategory)
 
   const onSearchRandomJoke = (evt: FormEvent) => {
-    let searchUrl = ''
-    evt.preventDefault()
-    if (selectedCategory?.length > 0) {
-      setIsLoading(true)
+    console.log(selectedCategory)
+    if (selectedCategory !== '[]' && selectedCategory !== '') {
       router.push(`/random/${selectedCategory}`)
+    } else {
+      router.push(`/random/[]`)
     }
+    setIsLoading(true)
   }
+
+  // useEffect(() => {
+  //   // document.title = `You clicked ${count} times`;
+  //   setIsLoading(false)
+  // })
 
   return (
     <Layout>
@@ -70,8 +76,7 @@ export default function Random({ data, categories, category }) {
           type="submit"
         />
       </form>
-
-      {/*{isLoading && <LinearProgress />}*/}
+      {isLoading && <LinearProgress />}
     </Layout>
   )
 }

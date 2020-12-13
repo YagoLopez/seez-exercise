@@ -23,8 +23,8 @@ export default function Layout({ children }) {
     <>
       <Drawer modal open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <DrawerHeader>
-          <DrawerTitle>DrawerHeader</DrawerTitle>
-          <DrawerSubtitle>Subtitle</DrawerSubtitle>
+          <DrawerTitle>Search Jokes</DrawerTitle>
+          <DrawerSubtitle>About Chuck Norris</DrawerSubtitle>
         </DrawerHeader>
         <DrawerContent>
           <List>
@@ -34,18 +34,8 @@ export default function Layout({ children }) {
               </Link>
             </ListItem>
             <ListItem onClick={onClickRandomJoke}>
-              <Link href="/random">
+              <Link href="/random/[]">
                 <a className={styles.menu_item}>Random Jokes</a>
-              </Link>
-            </ListItem>
-            <ListItem onClick={onClickRandomJoke}>
-              <Link href="/random">
-                <a className={styles.menu_item}>Free Text Search</a>
-              </Link>
-            </ListItem>
-            <ListItem onClick={onClickRandomJoke}>
-              <Link href="/random">
-                <a className={styles.menu_item}>Filtered Search</a>
               </Link>
             </ListItem>
           </List>
