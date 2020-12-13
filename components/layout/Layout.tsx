@@ -23,19 +23,19 @@ export default function Layout({ children }) {
     <>
       <Drawer modal open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <DrawerHeader>
-          <DrawerTitle>Search Jokes</DrawerTitle>
-          <DrawerSubtitle>About Chuck Norris</DrawerSubtitle>
+          <DrawerTitle>Chuck Norries Jokes</DrawerTitle>
+          <DrawerSubtitle>Seez Exercise</DrawerSubtitle>
         </DrawerHeader>
         <DrawerContent>
           <List>
             <ListItem onClick={onClickRandomJoke}>
               <Link href="/">
-                <a className={styles.menu_item}>Home</a>
+                <a className={styles.menu_item}>Search</a>
               </Link>
             </ListItem>
             <ListItem onClick={onClickRandomJoke}>
               <Link href="/random/[]">
-                <a className={styles.menu_item}>Random Jokes</a>
+                <a className={styles.menu_item}>Get Random Jokes</a>
               </Link>
             </ListItem>
           </List>
