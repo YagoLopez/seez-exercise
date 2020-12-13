@@ -1,7 +1,7 @@
 .centerHor {
   font: 15px Helvetica, Arial, sans-serif;
   text-align: center;
-  height: 56vh;
+  height: 50vh;
 }
 
 .centerHor:hover {
@@ -17,7 +17,7 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  height: 100vh;
+  height: 80vh;
 }
 
 .blockText {

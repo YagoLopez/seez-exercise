@@ -1,18 +1,21 @@
 import { useRouter } from 'next/router'
 import css from '../public/styles/global.module.css'
+import Layout from './layout/Layout'
 
 export const NoResults = ({ message }) => {
   const router = useRouter()
   const onGoBack = () => router.push('/')
 
   return (
-    <div className={css.centerHorVer}>
-      <p data-cy="no-results-msg">{message}</p>
-      <div>
-        <a href="#" onClick={onGoBack}>
-          ⇦ Go Back
-        </a>
+    <Layout>
+      <div className={css.centerHorVer}>
+        <p data-cy="no-results-msg">{message}</p>
+        <div>
+          <a href="#" onClick={onGoBack}>
+            ⇦ Go Back
+          </a>
+        </div>
       </div>
-    </div>
+    </Layout>
   )
 }
