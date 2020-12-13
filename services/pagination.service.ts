@@ -29,20 +29,20 @@ export class PaginationService {
     pageNumber: number,
     pageSize: number
   ) =>
-    PaginationService.getJokesByPage(totalJokeList, pageNumber, pageSize)
+    PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
       .length === 0
 
-  static goPreviousPage = (
-    totalJokeList: Joke[],
-    pageNumber: number,
-    pageSize: number
-  ) => PaginationService.getJokesByPage(totalJokeList, pageNumber - 1, pageSize)
-
-  static goNextPage = (
-    totalJokeList: Joke[],
-    pageNumber: number,
-    pageSize: number
-  ) => PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
+  // static goPreviousPage = (
+  //   totalJokeList: Joke[],
+  //   pageNumber: number,
+  //   pageSize: number
+  // ) => PaginationService.getJokesByPage(totalJokeList, pageNumber - 1, pageSize)
+  //
+  // static goNextPage = (
+  //   totalJokeList: Joke[],
+  //   pageNumber: number,
+  //   pageSize: number
+  // ) => PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
 
   static getNumberOfPages = (totalJokeList: Joke[]) =>
     Math.round(totalJokeList.length / CONST.JOKES_PER_PAGE)
