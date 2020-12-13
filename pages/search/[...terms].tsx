@@ -64,8 +64,6 @@ export default function Terms({ data, pageNumber }) {
     setPageNumber(+pageNumberState + delta)
     setState(jokesNextPage)
   }
-  const goPreviousPage = PaginationService.goPreviousPage
-  console.log(state, pageNumberState)
 
   return (
     <Layout>
