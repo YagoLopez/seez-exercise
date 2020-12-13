@@ -3,7 +3,7 @@ import css from '../public/styles/global.module.css'
 
 export const NoResults = ({ message }) => {
   const router = useRouter()
-  const onGoBack = () => router.back()
+  const onGoBack = () => router.push('/')
 
   return (
     <div className={css.centerHorVer}>

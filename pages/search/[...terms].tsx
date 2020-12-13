@@ -30,6 +30,10 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 
 export default function Terms({ data, pageNumber }) {
   const { result } = data
+  const totalPages = PaginationService.getNumberOfPages(result)
+  if (!PaginationService.isPageNumberValid(pageNumber, totalPages))
+    return <NoResults message={CONST.PAGE_OUT_RANGE} />
+
   const [pageNumberState, setPageNumber] = useState(+pageNumber)
   const [state, setState] = useState(
     PaginationService.getJokesByPage(
@@ -38,17 +42,6 @@ export default function Terms({ data, pageNumber }) {
       CONST.JOKES_PER_PAGE
     )
   )
-
-  // if (loading) return <LinearProgress />
-  // if (error) return <NoResults message={error.message} />
-
-  // const { totalPages, results } = data?.allMovies
-  // const { images } = data?.configuration
-
-  // if (!isPageNumberInRange(pageNumber, totalPages))
-  //   return <NoResults message={CONST.PAGE_OUT_RANGE} />
-  // if (totalPages === 0) return <NoResults message={CONST.NO_RESULTS} />
-
   const isFirstPage = PaginationService.isFirstPage(pageNumberState)
   const isLastPage = PaginationService.isLastPage(
     result,
@@ -111,7 +104,7 @@ export default function Terms({ data, pageNumber }) {
             Current page: {pageNumberState}
           </div>
           <div data-cy="total-pages" className={style.paginationFooter}>
-            Total pages: {PaginationService.getNumberOfPages(result)}
+            Total pages: {totalPages}
           </div>
           <div data-cy="total-jokes" className={style.paginationFooter}>
             Total jokes: {result.length}

@@ -33,4 +33,12 @@ export class PaginationService {
 
   static getNumberOfPages = (totalJokeList: Joke[]) =>
     Math.round(totalJokeList.length / CONST.JOKES_PER_PAGE)
+
+  static isPageNumberValid = (
+    pageNumber: string,
+    totalPages: number
+  ): boolean => {
+    if (isNaN(parseInt(pageNumber))) return false
+    return !(+pageNumber > totalPages || +pageNumber <= 0)
+  }
 }

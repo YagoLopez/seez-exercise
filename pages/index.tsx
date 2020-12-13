@@ -1,3 +1,4 @@
+// todo: add loader
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { CONST } from '../constants'
@@ -15,28 +16,30 @@ const Index = () => {
   const [searchterm, setSearchterm] = useState('')
   const [isLoading, setIsLoading] = useState(false)
 
-  const onSearchMovie = (evt: FormEvent) => {
+  const onSearchJoke = (evt: FormEvent) => {
     evt.preventDefault()
     searchterm.trim()
     if (searchterm?.length > 0) {
       setIsLoading(true)
-      router.push(`/movies-search/${searchterm}?page=1`)
+      router.push(`/search/${searchterm}`)
     }
   }
 
   return (
     <Layout>
       <PageHead title={CONST.TITLE_INDEX} />
-      {isLoading && <LinearProgress />}
-      <form onSubmit={onSearchMovie} className={css.form}>
+      {/*{isLoading && <LinearProgress />}*/}
+      <form onSubmit={onSearchJoke} className={css.form}>
         <main className={css.centerHor}>
           <label>
             <div className={css.blockText}>
               <div>
-                <Typography use="headline6">🎞️ Chuck Norris Jokes</Typography>
+                <Typography use="headline6">
+                  Search Chuck Norris Jokes
+                </Typography>
               </div>
               <div>
-                <Typography use="body1">For example: "Contact"</Typography>
+                <Typography use="body1">For example: "fight"</Typography>
               </div>
             </div>
             <TextField
@@ -62,20 +65,6 @@ const Index = () => {
             </div>
           </label>
           <div className={css.blockText}>
-            <div>
-              <Typography use="caption">
-                This app uses "The Movie Database GraphQL API":
-              </Typography>
-            </div>
-            <div>
-              <a
-                href={CONST.URL_TMDB_GRAPHQL_API}
-                target="_blank"
-                className={css.link}
-                rel="noopener noreferrer">
-                https://tmdb-graphql.com
-              </a>
-            </div>
             <div className={css.footerLinksContainer}>
               <div>
                 <a
