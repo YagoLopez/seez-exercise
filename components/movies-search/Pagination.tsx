@@ -1,21 +1,20 @@
 import { Button } from '@rmwc/button'
+import { PaginationService } from '../../services/pagination.service'
 import style from '../../public/styles/global.module.css'
-import JokesRepository from '../../services/jokes.repository'
-import { CONST } from '../../constants'
 
 export const Pagination = ({
   totalJokeList,
   pageNumber,
   pageSize: pageSize,
 }) => {
-  const isFirstPage = JokesRepository.isFirstPage(pageNumber)
-  const isLastPage = JokesRepository.isLastPage(
+  const isFirstPage = PaginationService.isFirstPage(pageNumber)
+  const isLastPage = PaginationService.isLastPage(
     totalJokeList,
     pageNumber,
     pageSize
   )
-  const goNextPage = JokesRepository.goNextPage
-  const goPreviousPage = JokesRepository.goPreviousPage
+  const goNextPage = PaginationService.goNextPage
+  const goPreviousPage = PaginationService.goPreviousPage
 
   return (
     <div className={style.paginationCentered}>
@@ -27,14 +26,8 @@ export const Pagination = ({
             className={style.paginationBtn}
             label="Prev Page"
             icon="keyboard_arrow_left"
-            onClick={() =>
-              JokesRepository.goPreviousPage(
-                totalJokeList,
-                pageNumber,
-                pageSize
-              )
-            }
-            disabled={JokesRepository.isFirstPage(pageNumber)}
+            onClick={() => goPreviousPage(totalJokeList, pageNumber, pageSize)}
+            disabled={isFirstPage}
             theme={['secondaryBg', 'onSecondary']}
           />
         )}
@@ -56,7 +49,7 @@ export const Pagination = ({
           Current page: {pageNumber}
         </div>
         <div data-cy="total-pages" className={style.paginationFooter}>
-          Total pages: {JokesRepository.getNumberOfPages(totalJokeList)}
+          Total pages: {PaginationService.getNumberOfPages(totalJokeList)}
         </div>
         <div data-cy="total-jokes" className={style.paginationFooter}>
           Total jokes: {totalJokeList.length}
