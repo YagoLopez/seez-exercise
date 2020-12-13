@@ -1,4 +1,4 @@
-import JokesRepository from './jokes.repository'
+import { PaginationService } from './pagination.service'
 
 const jokeList = [
   {
@@ -93,7 +93,7 @@ const jokeList = [
   },
 ]
 
-const getJokesPerPage = JokesRepository.getJokesByPage
+const getJokesPerPage = PaginationService.getJokesByPage
 
 describe('Test jokes pagination', () => {
   describe('Case 1: total number of elements (9) is divisible by page size (3)', () => {

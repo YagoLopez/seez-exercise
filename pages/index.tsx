@@ -1,7 +1,7 @@
 // todo: add loader
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
-import { CONST } from '../constants'
+import { CONST, ENDPOINTS } from '../constants'
 import { LinearProgress } from '@rmwc/linear-progress'
 import { Typography } from '@rmwc/typography'
 import { TextField } from '@rmwc/textfield'
@@ -9,11 +9,24 @@ import { Button } from '@rmwc/button'
 import css from '../public/styles/global.module.css'
 import PageHead from '../components/PageHead'
 import Layout from '../components/layout/Layout'
+import { GetStaticProps } from 'next'
+import JokesRepository from '../services/jokes.repository'
 
-const Index = () => {
+/**
+ * Using getStaticProps, categories are fetched just once at build time
+ * Categories are static data therefore is a good candidate for this optimization
+ */
+export const getStaticProps: GetStaticProps = async () => {
+  const categories = await JokesRepository.getData(`${ENDPOINTS.CATEGORIES}`)
+  return { props: { categories } }
+}
+
+const Index = ({ categories }) => {
   const router = useRouter()
   const [searchterm, setSearchterm] = useState('')
+  // todo: review loading process
   const [isLoading, setIsLoading] = useState(false)
+  const [category, setCategory] = useState('')
 
   const onSearchJoke = (evt: FormEvent) => {
     evt.preventDefault()
