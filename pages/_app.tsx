@@ -1,3 +1,7 @@
+import NProgress from 'nprogress'
+import Router from 'next/router'
+import Head from 'next/head'
+
 import '@material/button/dist/mdc.button.css'
 import '@material/ripple/dist/mdc.ripple.css'
 import '@material/list/dist/mdc.list.css'
@@ -22,7 +26,22 @@ import '@material/select/dist/mdc.select.css'
 import '@material/menu/dist/mdc.menu.css'
 import '@material/menu-surface/dist/mdc.menu-surface.css'
 import '../public/styles/responsive.css'
+import { CONST } from '../constants'
 
-const App = ({ Component, pageProps }) => <Component {...pageProps} />
+Router.events.on('routeChangeStart', (url) => {
+  console.log(`Loading: ${url}`)
+  NProgress.start()
+})
+Router.events.on('routeChangeComplete', () => NProgress.done())
+Router.events.on('routeChangeError', () => NProgress.done())
 
-export default App
+export default function App({ Component, pageProps }) {
+  return (
+    <>
+      <Head>
+        <link rel="stylesheet" type="text/css" href="/styles/nprogress.css" />
+      </Head>
+      <Component {...pageProps} />
+    </>
+  )
+}
