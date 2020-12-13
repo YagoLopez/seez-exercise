@@ -31,7 +31,6 @@ export default function Random({ data, categories, category }) {
   if (ErrorService.isError(data)) return <JokeErrorCmp data={data} />
 
   const [selectedCategory, setCategory] = useState('')
-  const [isLoading, setIsLoading] = useState(false)
   const router = useRouter()
 
   const onSelectCategory = (evt: FormEvent) => {
@@ -46,12 +45,10 @@ export default function Random({ data, categories, category }) {
     } else {
       router.push(`/random/[]`)
     }
-    setIsLoading(true)
   }
 
   return (
     <Layout>
-      {isLoading && <LinearProgress />}
       <form onSubmit={onSearchRandomJoke}>
         <Select
           label="Categories"

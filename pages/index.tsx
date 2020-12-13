@@ -1,4 +1,3 @@
-// todo: add loader
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
 import { CONST, ENDPOINTS } from '../constants'
@@ -16,15 +15,12 @@ import { Select } from '@rmwc/select'
 const Index = () => {
   const router = useRouter()
   const [searchterm, setSearchterm] = useState('')
-  // todo: review loading process
-  const [isLoading, setIsLoading] = useState(false)
 
   const onSearchJoke = (evt: FormEvent) => {
     let searchUrl = ''
     evt.preventDefault()
     searchterm.trim()
     if (searchterm?.length > 0) {
-      setIsLoading(true)
       router.push(`/search/${searchterm}`)
     }
   }
@@ -32,7 +28,6 @@ const Index = () => {
   return (
     <Layout>
       <PageHead title={CONST.TITLE_INDEX} />
-      {isLoading && <LinearProgress />}
       <form onSubmit={onSearchJoke} className={css.form}>
         <main className={css.centerHor}>
           <label>
