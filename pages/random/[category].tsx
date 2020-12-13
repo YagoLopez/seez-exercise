@@ -1,10 +1,8 @@
 import JokesRepository from '../../services/jokes.repository'
-import Joke from '../../models/Joke'
 import { GetServerSideProps } from 'next'
 import * as ErrorService from '../../services/errors.service'
 import React, { FormEvent, useEffect, useState } from 'react'
 import JokeErrorCmp from '../../components/JokeErrorCmp'
-import JokeErrorModel from '../../models/JokeError'
 import Layout from '../../components/layout/Layout'
 import { ENDPOINTS } from '../../constants'
 import { Select } from '@rmwc/select'
@@ -30,8 +28,6 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 export default function Random({ data, categories, category }) {
-  console.log('category', category)
-  // const { data, categories } = props
   if (ErrorService.isError(data)) return <JokeErrorCmp data={data} />
 
   const [selectedCategory, setCategory] = useState('')
@@ -54,13 +50,9 @@ export default function Random({ data, categories, category }) {
     setIsLoading(true)
   }
 
-  // useEffect(() => {
-  //   // document.title = `You clicked ${count} times`;
-  //   setIsLoading(false)
-  // })
-
   return (
     <Layout>
+      {isLoading && <LinearProgress />}
       <form onSubmit={onSearchRandomJoke}>
         <Select
           label="Categories"
@@ -69,14 +61,15 @@ export default function Random({ data, categories, category }) {
           onChange={(evt) => onSelectCategory(evt)}
         />
         <pre>{ErrorService.printJson(data)}</pre>
-        <Button
-          label="Search"
-          theme={['secondaryBg', 'onSecondary']}
-          raised
-          type="submit"
-        />
+        <div className={css.centerHor}>
+          <Button
+            label="Get New Joke"
+            theme={['secondaryBg', 'onSecondary']}
+            raised
+            type="submit"
+          />
+        </div>
       </form>
-      {isLoading && <LinearProgress />}
     </Layout>
   )
 }
