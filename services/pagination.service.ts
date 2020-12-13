@@ -24,7 +24,10 @@ export class PaginationService {
     totalJokeList: Joke[],
     pageNumber: number,
     pageSize: number
-  ) => JokesRepository.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
+  ) => {
+    debugger
+    JokesRepository.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
+  }
 
   static getNumberOfPages = (totalJokeList: Joke[]) =>
     Math.round(totalJokeList.length / CONST.JOKES_PER_PAGE)
