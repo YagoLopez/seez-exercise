@@ -16,9 +16,6 @@ export const CONST = {
   TITLE_INDEX: 'Chuck Norris Joke Search - Seez Exercise',
   PAGE_OUT_RANGE: 'No results found for this request',
   INPUT_SEARCH_HELP: 'Enter search terms',
-  YOUTUBE_VID_URL: 'https://www.youtube.com/embed/',
-  TOOLTIP_DETAIL_INFO: 'Click for more info',
-  MOVIE_DETAILS_TITLE: 'Movie Details',
   PAGE_HEAD_DEFAULT_DESCRIPTION: 'Search Chuck Norris Jokes',
   PAGE_HEAD_DEFAULT_KEYWORDS:
     'Seez Exercise, Chuck Norris, Nextjs, React, SSR, Server-Side-Rendering, API',
