@@ -64,14 +64,6 @@ export default function Terms({ data, pageNumber }) {
       {/*<JokeList data={data} page={pageNumber} />*/}
       <pre>{printJson(state)}</pre>
 
-      {/*
-      <Pagination
-        totalJokeList={result}
-        pageNumber={pageNumber}
-        pageSize={CONST.JOKES_PER_PAGE}
-      />
-*/}
-
       <div className={style.paginationCentered}>
         <div>
           {!isFirstPage && (
