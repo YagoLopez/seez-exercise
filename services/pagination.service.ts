@@ -1,6 +1,5 @@
 import Joke from '../models/Joke'
 import { CONST } from '../constants'
-import JokesRepository from './jokes.repository'
 
 export class PaginationService {
   /**
@@ -31,18 +30,6 @@ export class PaginationService {
   ) =>
     PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
       .length === 0
-
-  // static goPreviousPage = (
-  //   totalJokeList: Joke[],
-  //   pageNumber: number,
-  //   pageSize: number
-  // ) => PaginationService.getJokesByPage(totalJokeList, pageNumber - 1, pageSize)
-  //
-  // static goNextPage = (
-  //   totalJokeList: Joke[],
-  //   pageNumber: number,
-  //   pageSize: number
-  // ) => PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
 
   static getNumberOfPages = (totalJokeList: Joke[]) =>
     Math.round(totalJokeList.length / CONST.JOKES_PER_PAGE)
