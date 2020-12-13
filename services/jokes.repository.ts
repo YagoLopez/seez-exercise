@@ -27,17 +27,17 @@ export default class JokesRepository {
    * @param pageNumber Page number
    * @param pageSize Joke list per page
    */
-  static getJokesByPage = (
-    totalJokeList: Joke[],
-    pageNumber: number,
-    pageSize: number
-  ): Joke[] => {
-    if (pageNumber <= 0) return []
-    return totalJokeList.slice(
-      (pageNumber - 1) * pageSize,
-      pageNumber * pageSize
-    )
-  }
+  // static getJokesByPage = (
+  //   totalJokeList: Joke[],
+  //   pageNumber: number,
+  //   pageSize: number
+  // ): Joke[] => {
+  //   if (pageNumber <= 0) return []
+  //   return totalJokeList.slice(
+  //     (pageNumber - 1) * pageSize,
+  //     pageNumber * pageSize
+  //   )
+  // }
 
   // static isFirstPage = (currentPage: string) =>
   //   +currentPage <= 1 || currentPage === undefined
