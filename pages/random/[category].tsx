@@ -41,7 +41,6 @@ export default function Random({ data, categories, category }) {
   }
 
   const onSearchRandomJoke = (evt: FormEvent) => {
-    console.log(selectedCategory)
     if (selectedCategory !== '[]' && selectedCategory !== '') {
       router.push(`/random/${selectedCategory}`)
     } else {

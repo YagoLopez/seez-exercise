@@ -1,6 +1,6 @@
 // todo: remove comments and unused imports
 import { NoResults } from '../../components/NoResults'
-import { Pagination } from '../../components/movies-search/Pagination'
+// import { Pagination } from '../../components/movies-search/Pagination'
 import { CONST, ENDPOINTS } from '../../constants'
 import { LinearProgress } from '@rmwc/linear-progress'
 import PageHead from '../../components/PageHead'
