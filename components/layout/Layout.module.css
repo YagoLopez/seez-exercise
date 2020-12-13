@@ -1,0 +1,9 @@
+.menu_item {
+  color: cornflowerblue;
+  text-decoration: none;
+  width: 100%;
+}
+
+.menu_item:hover {
+  color: blue;
+}

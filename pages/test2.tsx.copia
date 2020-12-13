@@ -1,0 +1,18 @@
+import JokesRepository from '../services/JokesRepository'
+import useSWR from 'swr'
+
+export async function getStaticProps() {
+  const response = await JokesRepository.getRandomJoke()
+  return {
+    props: {
+      data: await response.json(),
+    },
+  }
+}
+export default function Test2(props) {
+  // Here the `fetcher` function will be executed on the client-side.
+  const { data, error } = useSWR('getRandomJoke', JokesRepository.getRandomJoke)
+  // return <pre>{JSON.stringify(props.data, null, 2)}</pre>
+  debugger
+  return <pre>{JSON.stringify(props.data, null, 2)}</pre>
+}
