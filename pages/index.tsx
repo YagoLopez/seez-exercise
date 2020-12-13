@@ -11,24 +11,16 @@ import PageHead from '../components/PageHead'
 import Layout from '../components/layout/Layout'
 import { GetStaticProps } from 'next'
 import JokesRepository from '../services/jokes.repository'
+import { Select } from '@rmwc/select'
 
-/**
- * Using getStaticProps, categories are fetched just once at build time
- * Categories are static data therefore is a good candidate for this optimization
- */
-export const getStaticProps: GetStaticProps = async () => {
-  const categories = await JokesRepository.getData(`${ENDPOINTS.CATEGORIES}`)
-  return { props: { categories } }
-}
-
-const Index = ({ categories }) => {
+const Index = () => {
   const router = useRouter()
   const [searchterm, setSearchterm] = useState('')
   // todo: review loading process
   const [isLoading, setIsLoading] = useState(false)
-  const [category, setCategory] = useState('')
 
   const onSearchJoke = (evt: FormEvent) => {
+    let searchUrl = ''
     evt.preventDefault()
     searchterm.trim()
     if (searchterm?.length > 0) {
@@ -40,7 +32,7 @@ const Index = ({ categories }) => {
   return (
     <Layout>
       <PageHead title={CONST.TITLE_INDEX} />
-      {/*{isLoading && <LinearProgress />}*/}
+      {isLoading && <LinearProgress />}
       <form onSubmit={onSearchJoke} className={css.form}>
         <main className={css.centerHor}>
           <label>

@@ -1,9 +1,9 @@
-const CHUCK_NORRIS_JOKES_API_BASE_URL = 'https://api.chucknorris.io/jokes/'
+const CHUCK_NORRIS_JOKES_API_BASE_URL = 'https://api.chucknorris.io/jokes'
 
 export const ENDPOINTS = {
   RANDOM_JOKES: `${CHUCK_NORRIS_JOKES_API_BASE_URL}/random`,
   RANDOM_JOKES_BY_NAME: `${CHUCK_NORRIS_JOKES_API_BASE_URL}/random?name=`,
-  RANDOM_JOKES_BY_CATEGORY: `${CHUCK_NORRIS_JOKES_API_BASE_URL}/random/categorie=`,
+  RANDOM_JOKES_BY_CATEGORY: `${CHUCK_NORRIS_JOKES_API_BASE_URL}/random?category=`,
   CATEGORIES: `${CHUCK_NORRIS_JOKES_API_BASE_URL}/categories`,
   SEARCH_JOKES: `${CHUCK_NORRIS_JOKES_API_BASE_URL}/search?query=`,
 }

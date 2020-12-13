@@ -17,6 +17,10 @@ import '@rmwc/theme/theme.css'
 import '@rmwc/tooltip/tooltip.css'
 import '@material/dialog/dist/mdc.dialog.css'
 import '@material/drawer/dist/mdc.drawer.css'
+import '@rmwc/select/select.css'
+import '@material/select/dist/mdc.select.css'
+import '@material/menu/dist/mdc.menu.css'
+import '@material/menu-surface/dist/mdc.menu-surface.css'
 import '../public/styles/responsive.css'
 
 const App = ({ Component, pageProps }) => <Component {...pageProps} />
