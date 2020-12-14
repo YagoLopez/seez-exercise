@@ -9,6 +9,7 @@ import { Select } from '@rmwc/select'
 import { Button } from '@rmwc/button'
 import css from '../../public/styles/global.module.css'
 import { useRouter } from 'next/router'
+import JokeListItem from '../../components/joke-list-item/JokeListItem'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { category } = context.query
@@ -45,18 +46,20 @@ export default function Random({ data, categories, category }) {
       router.push(`/random/[]`)
     }
   }
-
   return (
     <Layout>
       <form onSubmit={onSearchRandomJoke}>
         <Select
           label="Categories"
+          icon="input"
           options={categories}
           value={selectedCategory}
           onChange={(evt) => onSelectCategory(evt)}
         />
-        <pre>{ErrorService.printJson(data)}</pre>
-        <div className={css.centerHor}>
+        <section className={css.jokeItemContainer}>
+          <JokeListItem item={data} />
+        </section>
+        <div className={css.paginationCentered}>
           <Button
             label="Get New Joke"
             theme={['secondaryBg', 'onSecondary']}
