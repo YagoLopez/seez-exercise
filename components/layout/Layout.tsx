@@ -7,7 +7,7 @@ import {
   DrawerTitle,
 } from '@rmwc/drawer'
 import { List, ListItem } from '@rmwc/list'
-import { FormEvent, useState } from 'react'
+import { FormEvent, Ref, useRef, useState } from 'react'
 import Link from 'next/link'
 import styles from './Layout.module.css'
 import { CONST } from '../../constants'
@@ -15,6 +15,7 @@ import { Icon } from '@rmwc/icon'
 import { Switch } from '@rmwc/switch'
 
 export default function Layout({ children }) {
+  const layoutDivRef = useRef<HTMLDivElement>(null)
   const [openDrawer, setOpenDrawer] = useState(false)
   const [checked, setChecked] = useState(false)
 
@@ -22,14 +23,17 @@ export default function Layout({ children }) {
     setOpenDrawer(!openDrawer)
   }
 
-  const onClickRTL = (evt: FormEvent) => {
+  const onClickRTL = (
+    evt: FormEvent,
+    layoutDivRef: { current: HTMLDivElement }
+  ) => {
     setChecked(!!(evt.currentTarget as HTMLInputElement).checked)
-    const htmlElement = document.getElementsByTagName('html')[0]
-    htmlElement.setAttribute('dir', 'rtl')
+    const layoutDivElement = layoutDivRef.current
+    layoutDivElement.setAttribute('dir', 'rtl')
   }
 
   return (
-    <>
+    <div ref={layoutDivRef}>
       <Drawer modal open={openDrawer} onClose={() => setOpenDrawer(false)}>
         <DrawerHeader>
           <DrawerTitle>Chuck Norries Jokes</DrawerTitle>
@@ -53,7 +57,7 @@ export default function Layout({ children }) {
               <DrawerSubtitle>Text Direction:</DrawerSubtitle>
               <Switch
                 checked={checked}
-                onChange={(evt) => onClickRTL(evt)}
+                onChange={(evt) => onClickRTL(evt, layoutDivRef)}
                 label="RTL"
               />
             </DrawerHeader>
@@ -66,6 +70,6 @@ export default function Layout({ children }) {
         setOpenDrawer={setOpenDrawer}
       />
       {children}
-    </>
+    </div>
   )
 }
