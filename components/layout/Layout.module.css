@@ -1,10 +1,16 @@
 .menu_item {
-  color: cornflowerblue;
+  color: lightsteelblue;
   text-decoration: none;
   width: 100%;
+  display: flex;
+  justify-content: flex-start;
 }
 
 .menu_item:hover {
-  color: blue;
+  color: cornflowerblue;
+  text-decoration: none;
 }
 
+.icon_color {
+  color: lightsteelblue;
+}
