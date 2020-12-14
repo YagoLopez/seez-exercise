@@ -17,10 +17,10 @@
     "update:make": "npx npm-check-updates -u && yarn install"
   },
   "dependencies": {
-    "next": "10.0.0",
-    "next-pwa": "^3.1.5",
+    "next": "10.0.3",
+    "next-pwa": "^5.0.0",
     "nprogress": "^0.2.0",
-    "react": "16.14.0",
+    "react": "16.14",
     "react-dom": "16.14.0",
     "rmwc": "^6.1.4"
   },
