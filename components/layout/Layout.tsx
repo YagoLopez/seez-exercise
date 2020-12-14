@@ -7,17 +7,25 @@ import {
   DrawerTitle,
 } from '@rmwc/drawer'
 import { List, ListItem } from '@rmwc/list'
-import { useState } from 'react'
+import { FormEvent, useState } from 'react'
 import Link from 'next/link'
 import styles from './Layout.module.css'
 import { CONST } from '../../constants'
 import { Icon } from '@rmwc/icon'
+import { Switch } from '@rmwc/switch'
 
 export default function Layout({ children }) {
   const [openDrawer, setOpenDrawer] = useState(false)
+  const [checked, setChecked] = useState(false)
 
   const onClickRandomJoke = () => {
     setOpenDrawer(!openDrawer)
+  }
+
+  const onClickRTL = (evt: FormEvent) => {
+    setChecked(!!(evt.currentTarget as HTMLInputElement).checked)
+    const htmlElement = document.getElementsByTagName('html')[0]
+    htmlElement.setAttribute('dir', 'rtl')
   }
 
   return (
@@ -41,6 +49,14 @@ export default function Layout({ children }) {
                 <a className={styles.menu_item}>Get Random Jokes</a>
               </Link>
             </ListItem>
+            <DrawerHeader>
+              <DrawerSubtitle>Text Direction:</DrawerSubtitle>
+              <Switch
+                checked={checked}
+                onChange={(evt) => onClickRTL(evt)}
+                label="RTL"
+              />
+            </DrawerHeader>
           </List>
         </DrawerContent>
       </Drawer>

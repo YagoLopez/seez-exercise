@@ -26,6 +26,7 @@ import '@material/select/dist/mdc.select.css'
 import '@material/menu/dist/mdc.menu.css'
 import '@material/menu-surface/dist/mdc.menu-surface.css'
 import '@material/elevation/dist/mdc.elevation.css'
+import '@material/switch/dist/mdc.switch.css'
 import '../public/styles/responsive.css'
 
 Router.events.on('routeChangeStart', (url) => {
