@@ -1,5 +1,5 @@
 
-const searchTerm1 = 'contact'
+const searchTerm1 = 'test'
 const searchTerm2 = 'laskdjfask fla'
 
 describe('Test index page', () => {
@@ -27,22 +27,27 @@ describe('Test search functionality', () => {
 describe('Test pagination', () => {
 
   it('Should show total number of pages for:"' + searchTerm1 +'"', () => {
-    cy.visit('/movies-search/'+ searchTerm1 +'?page=1')
+    cy.visit('/search/'+ searchTerm1 +'/1')
     cy.get('[data-cy=total-pages]').should('contain.text', 'Total pages')
   })
 
   it('Should be disabled previous button for first page', () => {
-    cy.visit('/movies-search/'+ searchTerm1 +'?page=1')
+    cy.visit('/search/'+ searchTerm1 +'/1')
     cy.get('[data-cy=prev-btn]').should('not.exist')
   })
 
   it('Should be disabled next button for last page', () => {
-    cy.visit('/movies-search/rambo?page=2')
+    cy.visit('/search/test/16')
     cy.get('[data-cy=next-btn]').should('not.exist')
   })
 
   it('Should return no results for page out of range and not break', () => {
-    cy.visit('/movies-search/'+ searchTerm1 +'?page=100')
+    cy.visit('/search/'+ searchTerm1 +'/1000')
+    cy.get('[data-cy=no-results-msg]')
+  })
+
+  it('Should return no results for malformed page number: ---', () => {
+    cy.visit('/search/'+ searchTerm1 +'/---')
     cy.get('[data-cy=no-results-msg]')
   })
 

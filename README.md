@@ -55,9 +55,13 @@ yarn run # using yarn
 npm run dev
 yarn dev
 
-# unit test
-npm run jest
-yarn jest
+# unit test with jest
+npm run test:unit
+yarn test:unit
+
+# e2e test with cypress
+npm run test:e2e
+yarn test:e2e
 
 # build for production
 npm run build

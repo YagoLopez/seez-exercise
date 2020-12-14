@@ -9,8 +9,9 @@
     "start": "next start",
     "cypress:test": "echo Loading. Please wait... & cypress run --headed",
     "cypress:run": "cypress open",
-    "test": "start-server-and-test dev:test http://localhost:4000 cypress:test",
-    "jest": "jest",
+    "test:e2e": "start-server-and-test dev:test http://localhost:4000 cypress:test",
+    "test:e2e:local": "start-server-and-test dev:test http://localhost:4000 cypress:run",
+    "test:unit": "jest",
     "jest:watch": "jest --watch",
     "update:check": "echo 'Checking for outdated dependencies...' & npx npm-check-updates",
     "update:make": "npx npm-check-updates -u && yarn install"
