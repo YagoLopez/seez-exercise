@@ -14,11 +14,14 @@ import styles from './Layout.module.css'
 import { CONST } from '../../constants'
 import { Icon } from '@rmwc/icon'
 import { Switch } from '@rmwc/switch'
+import { NoteConsumer } from '../../context/NoteProvider'
 
 export default function Layout({ children }) {
   const layoutDivRef = useRef<HTMLDivElement>(null)
   const [openDrawer, setOpenDrawer] = useState(false)
   const [checked, setChecked] = useState(false)
+
+  // const { variableState, setVariableState } = useAppContext()
 
   const onClickRandomJoke = () => {
     setOpenDrawer(!openDrawer)
