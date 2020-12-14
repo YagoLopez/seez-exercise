@@ -15,7 +15,7 @@ class MyDocument extends Document {
           />
           <link
             rel="stylesheet"
-            href="//fonts.googleapis.com/icon?family=Material+Icons&display=swap"
+            href="https://fonts.googleapis.com/icon?family=Material+Icons&display=swap"
             as="font"
             crossOrigin="anonymous"
             media="all"
