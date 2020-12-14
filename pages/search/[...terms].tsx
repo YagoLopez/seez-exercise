@@ -1,6 +1,5 @@
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
-import { LinearProgress } from '@rmwc/linear-progress'
 import PageHead from '../../components/PageHead'
 import JokesRepository from '../../services/jokes.repository'
 import { GetServerSideProps } from 'next'
