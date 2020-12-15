@@ -1,3 +1,4 @@
+// todo: review Readme.md
 import { TopBar } from '../TopBar'
 import {
   Drawer,
@@ -7,15 +8,15 @@ import {
   DrawerTitle,
 } from '@rmwc/drawer'
 import { List, ListItem } from '@rmwc/list'
-import { FormEvent, Ref, useRef, useState } from 'react'
+import React, { FormEvent, Ref, useState } from 'react'
 import Link from 'next/link'
 import styles from './Layout.module.css'
 import { CONST } from '../../constants'
 import { Icon } from '@rmwc/icon'
-import { Switch } from '@rmwc/switch'
+import { AppContextConsumer } from '../../context/AppContextProvider'
+import { Button } from '@rmwc/button'
 
 export default function Layout({ children }) {
-  const layoutDivRef = useRef<HTMLDivElement>(null)
   const [openDrawer, setOpenDrawer] = useState(false)
   const [checked, setChecked] = useState(false)
 
@@ -23,53 +24,65 @@ export default function Layout({ children }) {
     setOpenDrawer(!openDrawer)
   }
 
-  const onClickRTL = (
-    evt: FormEvent,
-    layoutDivRef: { current: HTMLDivElement }
-  ) => {
-    setChecked(!!(evt.currentTarget as HTMLInputElement).checked)
-    const layoutDivElement = layoutDivRef.current
-    layoutDivElement.setAttribute('dir', 'rtl')
-  }
-
   return (
-    <div ref={layoutDivRef}>
-      <Drawer modal open={openDrawer} onClose={() => setOpenDrawer(false)}>
-        <DrawerHeader>
-          <DrawerTitle>Chuck Norries Jokes</DrawerTitle>
-          <DrawerSubtitle>Seez Exercise</DrawerSubtitle>
-        </DrawerHeader>
-        <DrawerContent>
-          <List>
-            <ListItem onClick={onClickRandomJoke}>
-              <Icon icon="search" className={styles.icon_color} />
-              <Link href="/">
-                <a className={styles.menu_item}>Search</a>
-              </Link>
-            </ListItem>
-            <ListItem onClick={onClickRandomJoke}>
-              <Icon icon="exit_to_app" className={styles.icon_color} />
-              <Link href="/random/[]">
-                <a className={styles.menu_item}>Get Random Jokes</a>
-              </Link>
-            </ListItem>
-            <DrawerHeader>
-              <DrawerSubtitle>Text Direction:</DrawerSubtitle>
-              <Switch
-                checked={checked}
-                onChange={(evt) => onClickRTL(evt, layoutDivRef)}
-                label="RTL"
-              />
-            </DrawerHeader>
-          </List>
-        </DrawerContent>
-      </Drawer>
-      <TopBar
-        title={CONST.APP_TITLE}
-        openDrawer={openDrawer}
-        setOpenDrawer={setOpenDrawer}
-      />
-      {children}
-    </div>
+    <AppContextConsumer>
+      {({ state, toggleRtl }) => (
+        <>
+          <div dir={state.isRtl ? 'rtl' : 'ltr'}>
+            <Drawer
+              modal
+              open={openDrawer}
+              onClose={() => setOpenDrawer(false)}>
+              <DrawerHeader>
+                <DrawerTitle>Chuck Norries Jokes</DrawerTitle>
+                <DrawerSubtitle>Seez Exercise</DrawerSubtitle>
+              </DrawerHeader>
+              <DrawerContent>
+                <List>
+                  <ListItem onClick={onClickRandomJoke}>
+                    <Icon icon="search" className={styles.icon_color} />
+                    <Link href="/">
+                      <a className={styles.menu_item}>Search</a>
+                    </Link>
+                  </ListItem>
+                  <ListItem onClick={onClickRandomJoke}>
+                    <Icon icon="exit_to_app" className={styles.icon_color} />
+                    <Link href="/random/[]">
+                      <a className={styles.menu_item}>Get Random Jokes</a>
+                    </Link>
+                  </ListItem>
+                  <DrawerHeader>
+                    <DrawerSubtitle>Text Direction</DrawerSubtitle>
+                    <br />
+                    {state.isRtl ? (
+                      <Button
+                        onClick={toggleRtl}
+                        label="Change to LTR"
+                        raised
+                      />
+                    ) : (
+                      <Button
+                        onClick={toggleRtl}
+                        label="Change to RTL"
+                        raised
+                      />
+                    )}
+                  </DrawerHeader>
+                  <ListItem onClick={onClickRandomJoke}>
+                    <span className={styles.menu_item}>Close Drawer</span>
+                  </ListItem>
+                </List>
+              </DrawerContent>
+            </Drawer>
+            <TopBar
+              title={CONST.APP_TITLE}
+              openDrawer={openDrawer}
+              setOpenDrawer={setOpenDrawer}
+            />
+            {children}
+          </div>
+        </>
+      )}
+    </AppContextConsumer>
   )
 }

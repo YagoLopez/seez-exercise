@@ -1,6 +1,7 @@
 import NProgress from 'nprogress'
 import Router from 'next/router'
 import Head from 'next/head'
+import AppContextProvider from '../context/AppContextProvider'
 
 import '@material/button/dist/mdc.button.css'
 import '@material/ripple/dist/mdc.ripple.css'
@@ -42,7 +43,9 @@ export default function App({ Component, pageProps }) {
       <Head>
         <link rel="stylesheet" type="text/css" href="/styles/nprogress.css" />
       </Head>
-      <Component {...pageProps} />
+      <AppContextProvider>
+        <Component {...pageProps} />
+      </AppContextProvider>
     </>
   )
 }
