@@ -21,8 +21,6 @@ export default function Layout({ children }) {
   const [openDrawer, setOpenDrawer] = useState(false)
   const [checked, setChecked] = useState(false)
 
-  // const { variableState, setVariableState } = useAppContext()
-
   const onClickRandomJoke = () => {
     setOpenDrawer(!openDrawer)
   }
@@ -37,58 +35,61 @@ export default function Layout({ children }) {
   }
 
   return (
-    <div ref={layoutDivRef}>
-      <Drawer modal open={openDrawer} onClose={() => setOpenDrawer(false)}>
-        <DrawerHeader>
-          <DrawerTitle>Chuck Norries Jokes</DrawerTitle>
-          <DrawerSubtitle>Seez Exercise</DrawerSubtitle>
-        </DrawerHeader>
-        <DrawerContent>
-          <List>
-            <ListItem onClick={onClickRandomJoke}>
-              <Icon icon="search" className={styles.icon_color} />
-              <Link href="/">
-                <a className={styles.menu_item}>Search</a>
-              </Link>
-            </ListItem>
-            <ListItem onClick={onClickRandomJoke}>
-              <Icon icon="exit_to_app" className={styles.icon_color} />
-              <Link href="/random/[]">
-                <a className={styles.menu_item}>Get Random Jokes</a>
-              </Link>
-            </ListItem>
-            <DrawerHeader>
-              <DrawerSubtitle>Text Direction:</DrawerSubtitle>
-              <Switch
-                checked={checked}
-                onChange={(evt) => onClickRTL(evt, layoutDivRef)}
-                label="RTL"
-              />
-            </DrawerHeader>
-          </List>
-        </DrawerContent>
-      </Drawer>
-      <TopBar
-        title={CONST.APP_TITLE}
-        openDrawer={openDrawer}
-        setOpenDrawer={setOpenDrawer}
-      />
+    <NoteConsumer>
+      {({ state, toggleRtl }) => (
+        <>
+          <div ref={layoutDivRef}>
+            <Drawer
+              modal
+              open={openDrawer}
+              onClose={() => setOpenDrawer(false)}>
+              <DrawerHeader>
+                <DrawerTitle>Chuck Norries Jokes</DrawerTitle>
+                <DrawerSubtitle>Seez Exercise</DrawerSubtitle>
+              </DrawerHeader>
+              <DrawerContent>
+                <List>
+                  <ListItem onClick={onClickRandomJoke}>
+                    <Icon icon="search" className={styles.icon_color} />
+                    <Link href="/">
+                      <a className={styles.menu_item}>Search</a>
+                    </Link>
+                  </ListItem>
+                  <ListItem onClick={onClickRandomJoke}>
+                    <Icon icon="exit_to_app" className={styles.icon_color} />
+                    <Link href="/random/[]">
+                      <a className={styles.menu_item}>Get Random Jokes</a>
+                    </Link>
+                  </ListItem>
+                  <DrawerHeader>
+                    <DrawerSubtitle>Text Direction:</DrawerSubtitle>
+                    <Switch
+                      checked={checked}
+                      onChange={(evt) => onClickRTL(evt, layoutDivRef)}
+                      label="RTL"
+                    />
+                  </DrawerHeader>
+                </List>
+              </DrawerContent>
+            </Drawer>
+            <TopBar
+              title={CONST.APP_TITLE}
+              openDrawer={openDrawer}
+              setOpenDrawer={setOpenDrawer}
+            />
 
-      <NoteConsumer>
-        {({ state, toggleRtl }) => (
-          <>
-            <button onClick={toggleRtl}>Toggle Rtl</button>
-            <div>rtl value: {state.isRtl.toString()}</div>
-            <div>
-              <Link href="/notelist2">
-                <a>go to notelist 2</a>
-              </Link>
-            </div>
-          </>
-        )}
-      </NoteConsumer>
+            {children}
+          </div>
 
-      {children}
-    </div>
+          <button onClick={toggleRtl}>Toggle Rtl</button>
+          <div>rtl value: {state.isRtl.toString()}</div>
+          <div>
+            <Link href="/notelist2">
+              <a>go to notelist 2</a>
+            </Link>
+          </div>
+        </>
+      )}
+    </NoteConsumer>
   )
 }
