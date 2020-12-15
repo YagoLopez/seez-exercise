@@ -8,7 +8,7 @@ import {
   DrawerTitle,
 } from '@rmwc/drawer'
 import { List, ListItem } from '@rmwc/list'
-import { FormEvent, Ref, useRef, useState } from 'react'
+import React, { FormEvent, Ref, useRef, useState } from 'react'
 import Link from 'next/link'
 import styles from './Layout.module.css'
 import { CONST } from '../../constants'
@@ -73,6 +73,21 @@ export default function Layout({ children }) {
         openDrawer={openDrawer}
         setOpenDrawer={setOpenDrawer}
       />
+
+      <NoteConsumer>
+        {({ state, toggleRtl }) => (
+          <>
+            <button onClick={toggleRtl}>Toggle Rtl</button>
+            <div>rtl value: {state.isRtl.toString()}</div>
+            <div>
+              <Link href="/notelist2">
+                <a>go to notelist 2</a>
+              </Link>
+            </div>
+          </>
+        )}
+      </NoteConsumer>
+
       {children}
     </div>
   )
