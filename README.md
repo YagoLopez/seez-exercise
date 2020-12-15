@@ -2,7 +2,7 @@
 
 # Seez Exercise
 
-- This app consumes the Chuck Norrisi Jokes API: https://api.chucknorris.io/jokes/random  
+- This app consumes the Chuck Norris Jokes API: https://api.chucknorris.io/jokes/random  
 
 - It was created using the [`create-next-app`](https://nextjs.org/blog/create-next-app) package
 
@@ -30,15 +30,12 @@
 
 ## Demo
 
-- [Run app in production mode]().
-  Use this link or the following QR code:
-  
-  ![Scan QRcode]()
+- [Run app in production mode](https://seez-exercise.vercel.app).
   
 
 ## Audit
 
-- https://binoovo.vercel.app/audit/report.html
+- https://seez-exercise.vercel.app/audit/audit.html
 
 ## Scripts
 
