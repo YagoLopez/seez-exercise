@@ -8,16 +8,15 @@ import {
   DrawerTitle,
 } from '@rmwc/drawer'
 import { List, ListItem } from '@rmwc/list'
-import React, { FormEvent, Ref, useRef, useState } from 'react'
+import React, { FormEvent, Ref, useState } from 'react'
 import Link from 'next/link'
 import styles from './Layout.module.css'
 import { CONST } from '../../constants'
 import { Icon } from '@rmwc/icon'
-import { Switch } from '@rmwc/switch'
 import { NoteConsumer } from '../../context/NoteProvider'
+import { Button } from '@rmwc/button'
 
 export default function Layout({ children }) {
-  const layoutDivRef = useRef<HTMLDivElement>(null)
   const [openDrawer, setOpenDrawer] = useState(false)
   const [checked, setChecked] = useState(false)
 
@@ -25,20 +24,11 @@ export default function Layout({ children }) {
     setOpenDrawer(!openDrawer)
   }
 
-  const onClickRTL = (
-    evt: FormEvent,
-    layoutDivRef: { current: HTMLDivElement }
-  ) => {
-    setChecked(!!(evt.currentTarget as HTMLInputElement).checked)
-    const layoutDivElement = layoutDivRef.current
-    layoutDivElement.setAttribute('dir', 'rtl')
-  }
-
   return (
     <NoteConsumer>
       {({ state, toggleRtl }) => (
         <>
-          <div ref={layoutDivRef} dir={state.isRtl ? 'rtl' : 'ltr'}>
+          <div dir={state.isRtl ? 'rtl' : 'ltr'}>
             <Drawer
               modal
               open={openDrawer}
@@ -62,13 +52,25 @@ export default function Layout({ children }) {
                     </Link>
                   </ListItem>
                   <DrawerHeader>
-                    <DrawerSubtitle>Text Direction:</DrawerSubtitle>
-                    <Switch
-                      checked={checked}
-                      onChange={(evt) => onClickRTL(evt, layoutDivRef)}
-                      label="RTL"
-                    />
+                    <DrawerSubtitle>Text Direction</DrawerSubtitle>
+                    <br />
+                    {state.isRtl ? (
+                      <Button
+                        onClick={toggleRtl}
+                        label="Change to LTR"
+                        raised
+                      />
+                    ) : (
+                      <Button
+                        onClick={toggleRtl}
+                        label="Change to RTL"
+                        raised
+                      />
+                    )}
                   </DrawerHeader>
+                  <ListItem onClick={onClickRandomJoke}>
+                    <span className={styles.menu_item}>Close Drawer</span>
+                  </ListItem>
                 </List>
               </DrawerContent>
             </Drawer>
@@ -77,16 +79,7 @@ export default function Layout({ children }) {
               openDrawer={openDrawer}
               setOpenDrawer={setOpenDrawer}
             />
-
             {children}
-          </div>
-
-          <button onClick={toggleRtl}>Toggle Rtl</button>
-          <div>rtl value: {state.isRtl.toString()}</div>
-          <div>
-            <Link href="/notelist2">
-              <a>go to notelist 2</a>
-            </Link>
           </div>
         </>
       )}
