@@ -13,7 +13,7 @@ import Link from 'next/link'
 import styles from './Layout.module.css'
 import { CONST } from '../../constants'
 import { Icon } from '@rmwc/icon'
-import { NoteConsumer } from '../../context/NoteProvider'
+import { AppContextConsumer } from '../../context/AppContextProvider'
 import { Button } from '@rmwc/button'
 
 export default function Layout({ children }) {
@@ -25,7 +25,7 @@ export default function Layout({ children }) {
   }
 
   return (
-    <NoteConsumer>
+    <AppContextConsumer>
       {({ state, toggleRtl }) => (
         <>
           <div dir={state.isRtl ? 'rtl' : 'ltr'}>
@@ -83,6 +83,6 @@ export default function Layout({ children }) {
           </div>
         </>
       )}
-    </NoteConsumer>
+    </AppContextConsumer>
   )
 }

@@ -1,22 +1,22 @@
 import React, { Component } from 'react'
 
-const NoteContext = React.createContext()
+const AppContext = React.createContext()
 
-class NoteProvider extends Component {
+class AppContextProvider extends Component {
   state = { isRtl: false }
   render() {
     return (
-      <NoteContext.Provider
+      <AppContext.Provider
         value={{
           state: this.state,
           toggleRtl: () => this.setState({ isRtl: !this.state.isRtl }),
         }}>
         {this.props.children}
-      </NoteContext.Provider>
+      </AppContext.Provider>
     )
   }
 }
 
-const NoteConsumer = NoteContext.Consumer
-export default NoteProvider
-export { NoteConsumer }
+const AppContextConsumer = AppContext.Consumer
+export default AppContextProvider
+export { AppContextConsumer }

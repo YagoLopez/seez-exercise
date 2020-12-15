@@ -1,12 +1,12 @@
 import React, { Component } from 'react'
-import { NoteConsumer } from '../context/NoteProvider'
+import { AppContextConsumer } from '../context/AppContextProvider'
 import Link from 'next/link'
 
 class NotesList extends Component {
   render() {
     return (
       <div>
-        <NoteConsumer>
+        <AppContextConsumer>
           {({ state, toggleRtl }) => (
             <>
               <button onClick={toggleRtl}>Toggle Rtl</button>
@@ -18,7 +18,7 @@ class NotesList extends Component {
               </div>
             </>
           )}
-        </NoteConsumer>
+        </AppContextConsumer>
       </div>
     )
   }
