@@ -38,7 +38,7 @@ export default function Layout({ children }) {
     <NoteConsumer>
       {({ state, toggleRtl }) => (
         <>
-          <div ref={layoutDivRef}>
+          <div ref={layoutDivRef} dir={state.isRtl ? 'rtl' : 'ltr'}>
             <Drawer
               modal
               open={openDrawer}
