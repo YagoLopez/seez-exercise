@@ -29,9 +29,9 @@ import '@material/menu-surface/dist/mdc.menu-surface.css'
 import '@material/elevation/dist/mdc.elevation.css'
 import '@material/switch/dist/mdc.switch.css'
 import '../public/styles/responsive.css'
+import React from 'react'
 
 Router.events.on('routeChangeStart', (url) => {
-  console.log(`Loading: ${url}`)
   NProgress.start()
 })
 Router.events.on('routeChangeComplete', () => NProgress.done())
@@ -41,7 +41,15 @@ export default function App({ Component, pageProps }) {
   return (
     <>
       <Head>
+        <meta name="viewport" content="width=device-width, initial-scale=1" />
+        <meta name="theme-color" content="#317EFB" />
+        <link rel="manifest" href="/manifest.json" />
+        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
+        <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg" />
+        <link rel="mask-icon" href="favicon.svg" color="#000000" />
         <link rel="stylesheet" type="text/css" href="/styles/nprogress.css" />
+        <link rel="preconnect" href="https://api.chucknorris.io" />
+        <link rel="dns-prefetch" href="https://api.chucknorris.io" />
       </Head>
       <AppContextProvider>
         <Component {...pageProps} />

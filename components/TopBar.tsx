@@ -26,7 +26,6 @@ export const TopBar = ({
   setOpenDrawer,
 }: TopBarProps) => {
   const router = useRouter()
-  const goBack = () => router.back()
 
   return (
     <>
@@ -37,7 +36,6 @@ export const TopBar = ({
               icon="menu"
               onClick={() => setOpenDrawer(!openDrawer)}
             />
-            {/*<IconButton onClick={goBack} icon="arrow_back" title="Go Back" />*/}
             <TopAppBarTitle>{title}</TopAppBarTitle>
           </TopAppBarSection>
           {showHomeBtn && (
