@@ -10,7 +10,6 @@ import PageHead from '../components/PageHead'
 import Layout from '../components/layout/Layout'
 import { GetStaticProps } from 'next'
 import JokesRepository from '../services/jokes.repository'
-import { Select } from '@rmwc/select'
 
 const Index = () => {
   const router = useRouter()

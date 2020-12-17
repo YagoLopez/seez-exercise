@@ -1,4 +1,3 @@
-// todo: review Readme.md
 import { TopBar } from '../TopBar'
 import {
   Drawer,
@@ -8,7 +7,7 @@ import {
   DrawerTitle,
 } from '@rmwc/drawer'
 import { List, ListItem } from '@rmwc/list'
-import React, { FormEvent, Ref, useState } from 'react'
+import React, { useState } from 'react'
 import Link from 'next/link'
 import styles from './Layout.module.css'
 import { CONST } from '../../constants'
@@ -18,7 +17,6 @@ import { Button } from '@rmwc/button'
 
 export default function Layout({ children }) {
   const [openDrawer, setOpenDrawer] = useState(false)
-  const [checked, setChecked] = useState(false)
 
   const onClickRandomJoke = () => {
     setOpenDrawer(!openDrawer)
@@ -27,7 +25,6 @@ export default function Layout({ children }) {
   return (
     <AppContextConsumer>
       {({ state, toggleRtl }) => (
-        <>
           <div dir={state.isRtl ? 'rtl' : 'ltr'}>
             <Drawer
               modal
@@ -81,7 +78,6 @@ export default function Layout({ children }) {
             />
             {children}
           </div>
-        </>
       )}
     </AppContextConsumer>
   )

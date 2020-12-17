@@ -18,5 +18,5 @@ class AppContextProvider extends Component {
 }
 
 const AppContextConsumer = AppContext.Consumer
-export default AppContextProvider
 export { AppContextConsumer }
+export default AppContextProvider
