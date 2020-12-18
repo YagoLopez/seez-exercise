@@ -31,8 +31,15 @@ export class PaginationService {
     PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
       .length === 0
 
-  static getNumberOfPages = (totalJokeList: Joke[]) =>
-    Math.round(totalJokeList.length / CONST.JOKES_PER_PAGE)
+  static getNumberOfPages = (totalJokeList: Joke[]) => {
+    const totalNumberOfPages = Math.floor(
+      totalJokeList.length / CONST.JOKES_PER_PAGE
+    )
+    const totalNumberOfPagesRest = totalJokeList.length % CONST.JOKES_PER_PAGE
+    return totalNumberOfPagesRest > 0
+      ? totalNumberOfPages + 1
+      : totalNumberOfPages
+  }
 
   static isPageNumberValid = (
     pageNumber: string,
