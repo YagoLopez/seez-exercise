@@ -9,6 +9,7 @@ import { useState } from 'react'
 import style from '../../public/styles/global.module.css'
 import { Button } from '@rmwc/button'
 import { PaginationService } from '../../services/pagination.service'
+import { isError } from '../../services/errors.service'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { terms } = context.query
@@ -26,8 +27,11 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function SearchTermsPage({ data, pageNumber }) {
   const { result } = data
   const totalPages = PaginationService.getNumberOfPages(result)
-  if (!PaginationService.isPageNumberValid(pageNumber, totalPages))
-    return <NoResults message={CONST.PAGE_OUT_RANGE} />
+  if (
+    isError(data) ||
+    !PaginationService.isPageNumberValid(pageNumber, totalPages)
+  )
+    return <NoResults message={data.message} />
 
   const [currentPage, setCurrentPage] = useState(+pageNumber)
   const [jokeList, setJokeList] = useState(

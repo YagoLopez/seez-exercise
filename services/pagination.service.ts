@@ -31,7 +31,7 @@ export class PaginationService {
     PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
       .length === 0
 
-  static getNumberOfPages = (totalJokeList: Joke[]) => {
+  static getNumberOfPages = (totalJokeList: Joke[] = []) => {
     const totalNumberOfPages = Math.floor(
       totalJokeList.length / CONST.JOKES_PER_PAGE
     )
