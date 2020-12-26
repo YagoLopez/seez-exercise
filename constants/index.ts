@@ -12,7 +12,7 @@ export const CONST = {
   APP_TITLE: 'Seez Exercise',
   INPUT_SEARCH_PLACEHOLDER: 'Search Terms',
   JOKES_PER_PAGE: 10,
-  JOKES_SEARCH_RESULT: 'Jokes Search Results',
+  JOKES_SEARCH_RESULT: 'Search Results',
   TITLE_INDEX: 'Chuck Norris Joke Search - Seez Exercise',
   SEARCH_FORM_TITLE: 'Search for Chuck Norris Jokes',
   NO_RESULTS: 'No results found for this request',

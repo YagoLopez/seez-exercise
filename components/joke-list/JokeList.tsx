@@ -2,13 +2,13 @@ import Joke from '../../models/Joke'
 import { List, ListGroup } from '@rmwc/list'
 import JokeListItem from '../joke-list-item/JokeListItem'
 
-export default function JokeList({ list }) {
+export default function JokeList({ list, search }) {
   return (
     <>
-      <h2>List of Jokes</h2>
-      {list.map((joke: Joke, index: number) => {
+      <h2>Joke search with "{search}"</h2>
+      {list.map((joke: Joke) => {
         return (
-          <List twoLine avatarList key={index}>
+          <List twoLine avatarList key={joke.id}>
             <ListGroup>
               <JokeListItem item={joke} />
             </ListGroup>

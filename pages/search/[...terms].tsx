@@ -1,4 +1,3 @@
-// todo: include search string in search results
 // todo: improve loader
 // todo: change browser and service worker icons
 // todo: input search term validation in browser
@@ -27,11 +26,12 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
     props: {
       data,
       pageNumber: terms[1] ? terms[1] : 1,
+      searchTerm: terms[0],
     },
   }
 }
 
-export default function SearchTermsPage({ data, pageNumber }) {
+export default function SearchTermsPage({ data, pageNumber, searchTerm }) {
   const { result } = data
   const totalPages = PaginationService.getNumberOfPages(result)
   if (!isThereResults(data, pageNumber, totalPages)) {
@@ -70,7 +70,7 @@ export default function SearchTermsPage({ data, pageNumber }) {
   return (
     <>
       <PageHead title={CONST.JOKES_SEARCH_RESULT} />
-      <JokeList list={jokeList} />
+      <JokeList list={jokeList} search={searchTerm} />
       <PaginationFooter paginationData={paginationData} />
     </>
   )

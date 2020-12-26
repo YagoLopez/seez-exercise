@@ -11,7 +11,7 @@ import Layout from '../components/layout/Layout'
 import { GetStaticProps } from 'next'
 import JokesRepository from '../services/jokes.repository'
 
-const Index = () => {
+export default function Index() {
   const router = useRouter()
   const [searchterm, setSearchterm] = useState('')
 
@@ -89,5 +89,3 @@ const Index = () => {
     </>
   )
 }
-
-export default Index
