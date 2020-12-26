@@ -1,4 +1,3 @@
-// todo: better use of layout
 // todo: create footer cmp for pagination btns
 // todo: input search term validation in browser
 // todo: use error boundaries to catch errors in _app.jsx
