@@ -1,4 +1,3 @@
-// todo: create footer cmp for pagination btns
 // todo: input search term validation in browser
 // todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
@@ -7,6 +6,8 @@
 // todo: create fn to check for error or page out of range
 // todo: improve loader
 // todo: try to use rtl global variable only in _app.tsx
+// todo: change browser and service worker icons
+// todo: include search string in search results
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'
@@ -14,10 +15,9 @@ import JokesRepository from '../../services/jokes.repository'
 import { GetServerSideProps } from 'next'
 import JokeList from '../../components/joke-list/JokeList'
 import { useState } from 'react'
-import style from '../../public/styles/global.module.css'
-import { Button } from '@rmwc/button'
 import { PaginationService } from '../../services/pagination.service'
 import { isError } from '../../services/errors.service'
+import PaginationFooter from '../../components/PaginationFooter'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { terms } = context.query
@@ -61,49 +61,20 @@ export default function SearchTermsPage({ data, pageNumber }) {
     setJokeList(nextPageJokeList)
   }
 
+  const paginationData = {
+    isFirstPage,
+    isLastPage,
+    goNextPrevPage,
+    currentPage,
+    totalPages,
+    totalJokes: result,
+  }
+
   return (
     <>
       <PageHead title={CONST.JOKES_SEARCH_RESULT} />
       <JokeList list={jokeList} />
-      <div className={style.paginationCentered}>
-        <div>
-          {!isFirstPage && (
-            <Button
-              raised
-              data-cy="prev-btn"
-              className={style.paginationBtn}
-              label="Prev Page"
-              icon="keyboard_arrow_left"
-              onClick={() => goNextPrevPage(-1)}
-              disabled={isFirstPage}
-              theme={['secondaryBg', 'onSecondary']}
-            />
-          )}
-          {!isLastPage && (
-            <Button
-              raised
-              data-cy="next-btn"
-              className={style.paginationBtn}
-              label="Next Page"
-              trailingIcon="keyboard_arrow_right"
-              onClick={() => goNextPrevPage(+1)}
-              disabled={isLastPage}
-              theme={['secondaryBg', 'onSecondary']}
-            />
-          )}
-        </div>
-        <div>
-          <div data-cy="current-page" className={style.paginationFooter}>
-            Current page: {currentPage}
-          </div>
-          <div data-cy="total-pages" className={style.paginationFooter}>
-            Total pages: {totalPages}
-          </div>
-          <div data-cy="total-jokes" className={style.paginationFooter}>
-            Total jokes: {result.length}
-          </div>
-        </div>
-      </div>
+      <PaginationFooter paginationData={paginationData} />
     </>
   )
 }
