@@ -3,6 +3,7 @@
 // todo: input search term validation in browser
 // todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
+// todo: update dependencies
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'
