@@ -1,4 +1,3 @@
-import NProgress from 'nprogress'
 import Router from 'next/router'
 import Head from 'next/head'
 import AppContextProvider from '../context/AppContextProvider'
@@ -30,14 +29,16 @@ import '@material/elevation/dist/mdc.elevation.css'
 import '@material/switch/dist/mdc.switch.css'
 import '../public/styles/responsive.css'
 import Layout from '../components/layout/Layout'
+import { LinearProgress } from '@rmwc/linear-progress'
+import { useState } from 'react'
 
-Router.events.on('routeChangeStart', (url) => {
-  NProgress.start()
-})
-Router.events.on('routeChangeComplete', () => NProgress.done())
-Router.events.on('routeChangeError', () => NProgress.done())
+export default function App({ Component, pageProps }) {
+  const [isLoading, setIsLoading] = useState(false)
 
-export default function App({ Component: PageComponent, pageProps }) {
+  Router.events.on('routeChangeStart', (url: string) => setIsLoading(true))
+  Router.events.on('routeChangeComplete', () => setIsLoading(false))
+  Router.events.on('routeChangeError', () => setIsLoading(false))
+
   return (
     <>
       <Head>
@@ -47,13 +48,13 @@ export default function App({ Component: PageComponent, pageProps }) {
         <link rel="icon" type="image/svg+xml" href="favicon.svg" />
         <link rel="apple-touch-icon" sizes="180x180" href="favicon.svg" />
         <link rel="mask-icon" href="favicon.svg" color="#000000" />
-        <link rel="stylesheet" type="text/css" href="/styles/nprogress.css" />
         <link rel="preconnect" href="https://api.chucknorris.io" />
         <link rel="dns-prefetch" href="https://api.chucknorris.io" />
       </Head>
       <AppContextProvider>
         <Layout>
-          <PageComponent {...pageProps} />
+          {isLoading && <LinearProgress />}
+          <Component {...pageProps} />
         </Layout>
       </AppContextProvider>
     </>
