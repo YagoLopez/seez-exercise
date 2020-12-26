@@ -29,7 +29,7 @@ import '@material/menu-surface/dist/mdc.menu-surface.css'
 import '@material/elevation/dist/mdc.elevation.css'
 import '@material/switch/dist/mdc.switch.css'
 import '../public/styles/responsive.css'
-import React from 'react'
+import Layout from '../components/layout/Layout'
 
 Router.events.on('routeChangeStart', (url) => {
   NProgress.start()
@@ -52,7 +52,9 @@ export default function App({ Component: PageComponent, pageProps }) {
         <link rel="dns-prefetch" href="https://api.chucknorris.io" />
       </Head>
       <AppContextProvider>
-        <PageComponent {...pageProps} />
+        <Layout>
+          <PageComponent {...pageProps} />
+        </Layout>
       </AppContextProvider>
     </>
   )

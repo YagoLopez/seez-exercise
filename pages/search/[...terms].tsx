@@ -5,13 +5,14 @@
 // todo: improve lighthouse accesibility score
 // todo: update dependencies
 // todo: add types to react hooks
+// todo: create fn to check for error or page out of range
+// todo: improve loader
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'
 import JokesRepository from '../../services/jokes.repository'
 import { GetServerSideProps } from 'next'
 import JokeList from '../../components/joke-list/JokeList'
-import Layout from '../../components/layout/Layout'
 import { useState } from 'react'
 import style from '../../public/styles/global.module.css'
 import { Button } from '@rmwc/button'
@@ -61,10 +62,9 @@ export default function SearchTermsPage({ data, pageNumber }) {
   }
 
   return (
-    <Layout>
+    <>
       <PageHead title={CONST.JOKES_SEARCH_RESULT} />
       <JokeList list={jokeList} />
-
       <div className={style.paginationCentered}>
         <div>
           {!isFirstPage && (
@@ -104,6 +104,6 @@ export default function SearchTermsPage({ data, pageNumber }) {
           </div>
         </div>
       </div>
-    </Layout>
+    </>
   )
 }

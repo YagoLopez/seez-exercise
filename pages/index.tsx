@@ -25,7 +25,7 @@ const Index = () => {
   }
 
   return (
-    <Layout>
+    <>
       <PageHead title={CONST.TITLE_INDEX} />
       <form onSubmit={onSearchJoke} className={css.form}>
         <main className={css.centerHor}>
@@ -86,7 +86,7 @@ const Index = () => {
           </div>
         </main>
       </form>
-    </Layout>
+    </>
   )
 }
 

@@ -1,6 +1,5 @@
 import { useRouter } from 'next/router'
 import css from '../public/styles/global.module.css'
-import Layout from './layout/Layout'
 import { CONST } from '../constants'
 
 export const NoResults = ({ message }) => {
@@ -8,15 +7,13 @@ export const NoResults = ({ message }) => {
   const onGoBack = () => router.push('/')
 
   return (
-    <Layout>
-      <div className={css.centerHorVer}>
-        <p data-cy="no-results-msg">{message ?? CONST.NO_RESULTS}</p>
-        <div>
-          <a href="#" onClick={onGoBack}>
-            ⇦ Go Back
-          </a>
-        </div>
+    <div className={css.centerHorVer}>
+      <p data-cy="no-results-msg">{message ?? CONST.NO_RESULTS}</p>
+      <div>
+        <a href="#" onClick={onGoBack}>
+          ⇦ Go Back
+        </a>
       </div>
-    </Layout>
+    </div>
   )
 }
