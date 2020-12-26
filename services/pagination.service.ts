@@ -21,7 +21,7 @@ export class PaginationService {
   }
 
   static isFirstPage = (currentPage: number) =>
-    currentPage <= 1 || currentPage === undefined
+    currentPage === 1 || currentPage === undefined
 
   static isLastPage = (
     totalJokeList: Joke[],
@@ -46,6 +46,6 @@ export class PaginationService {
     totalPages: number
   ): boolean => {
     if (isNaN(+pageNumber)) return false
-    return !(+pageNumber > totalPages || +pageNumber <= 0)
+    return +pageNumber < totalPages || +pageNumber <= 0
   }
 }

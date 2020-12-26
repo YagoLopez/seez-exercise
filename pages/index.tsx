@@ -33,7 +33,7 @@ const Index = () => {
             <div className={css.blockText}>
               <div>
                 <Typography use="headline6">
-                  Search Chuck Norris Jokes
+                  {CONST.SEARCH_FORM_TITLE}
                 </Typography>
               </div>
               <div>

@@ -1,13 +1,12 @@
+// todo: include search string in search results
+// todo: improve loader
+// todo: change browser and service worker icons
 // todo: input search term validation in browser
 // todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
 // todo: update dependencies
 // todo: add types to react hooks
-// todo: create fn to check for error or page out of range
-// todo: improve loader
 // todo: try to use rtl global variable only in _app.tsx
-// todo: change browser and service worker icons
-// todo: include search string in search results
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'
@@ -16,7 +15,7 @@ import { GetServerSideProps } from 'next'
 import JokeList from '../../components/joke-list/JokeList'
 import { useState } from 'react'
 import { PaginationService } from '../../services/pagination.service'
-import { isError } from '../../services/errors.service'
+import { isThereResults } from '../../services/errors.service'
 import PaginationFooter from '../../components/PaginationFooter'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
@@ -35,11 +34,9 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 export default function SearchTermsPage({ data, pageNumber }) {
   const { result } = data
   const totalPages = PaginationService.getNumberOfPages(result)
-  if (
-    isError(data) ||
-    !PaginationService.isPageNumberValid(pageNumber, totalPages)
-  )
+  if (!isThereResults(data, pageNumber, totalPages)) {
     return <NoResults message={data.message} />
+  }
 
   const [currentPage, setCurrentPage] = useState(+pageNumber)
   const [jokeList, setJokeList] = useState(
