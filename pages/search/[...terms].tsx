@@ -29,34 +29,30 @@ export default function SearchTermsPage({ data, pageNumber }) {
   if (!PaginationService.isPageNumberValid(pageNumber, totalPages))
     return <NoResults message={CONST.PAGE_OUT_RANGE} />
 
-  const [pageNumberState, setPageNumber] = useState(+pageNumber)
-  const [state, setState] = useState(
-    PaginationService.getJokesByPage(
-      result,
-      pageNumberState,
-      CONST.JOKES_PER_PAGE
-    )
+  const [currentPage, setCurrentPage] = useState(+pageNumber)
+  const [jokeList, setJokeList] = useState(
+    PaginationService.getJokesByPage(result, currentPage, CONST.JOKES_PER_PAGE)
   )
-  const isFirstPage = PaginationService.isFirstPage(pageNumberState)
+  const isFirstPage = PaginationService.isFirstPage(currentPage)
   const isLastPage = PaginationService.isLastPage(
     result,
-    pageNumberState,
+    currentPage,
     CONST.JOKES_PER_PAGE
   )
   const goNextPrevPage = (delta: number) => {
-    const jokesNextPage = PaginationService.getJokesByPage(
+    const nextPageJokeList = PaginationService.getJokesByPage(
       result,
-      pageNumberState + delta,
+      currentPage + delta,
       CONST.JOKES_PER_PAGE
     )
-    setPageNumber(+pageNumberState + delta)
-    setState(jokesNextPage)
+    setCurrentPage(+currentPage + delta)
+    setJokeList(nextPageJokeList)
   }
 
   return (
     <Layout>
       <PageHead title={CONST.JOKES_SEARCH_RESULT} />
-      <JokeList list={state} />
+      <JokeList list={jokeList} />
 
       <div className={style.paginationCentered}>
         <div>
@@ -87,7 +83,7 @@ export default function SearchTermsPage({ data, pageNumber }) {
         </div>
         <div>
           <div data-cy="current-page" className={style.paginationFooter}>
-            Current page: {pageNumberState}
+            Current page: {currentPage}
           </div>
           <div data-cy="total-pages" className={style.paginationFooter}>
             Total pages: {totalPages}
