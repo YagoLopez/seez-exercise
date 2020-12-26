@@ -41,7 +41,7 @@ export default function SearchTermsPage({ data, pageNumber }) {
 
   const [currentPage, setCurrentPage] = useState(+pageNumber)
   const [jokeList, setJokeList] = useState(
-    PaginationService.getJokesByPage(result, currentPage, CONST.JOKES_PER_PAGE)
+    PaginationService.getJokesPerPage(result, currentPage, CONST.JOKES_PER_PAGE)
   )
   const isFirstPage = PaginationService.isFirstPage(currentPage)
   const isLastPage = PaginationService.isLastPage(
@@ -50,7 +50,7 @@ export default function SearchTermsPage({ data, pageNumber }) {
     CONST.JOKES_PER_PAGE
   )
   const goNextPrevPage = (delta: number) => {
-    const nextPageJokeList = PaginationService.getJokesByPage(
+    const nextPageJokeList = PaginationService.getJokesPerPage(
       result,
       currentPage + delta,
       CONST.JOKES_PER_PAGE

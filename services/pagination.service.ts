@@ -8,7 +8,7 @@ export class PaginationService {
    * @param pageNumber Page number
    * @param pageSize Joke list per page
    */
-  static getJokesByPage = (
+  static getJokesPerPage = (
     totalJokeList: Joke[],
     pageNumber: number,
     pageSize: number
@@ -28,7 +28,7 @@ export class PaginationService {
     pageNumber: number,
     pageSize: number
   ) =>
-    PaginationService.getJokesByPage(totalJokeList, pageNumber + 1, pageSize)
+    PaginationService.getJokesPerPage(totalJokeList, pageNumber + 1, pageSize)
       .length === 0
 
   static getNumberOfPages = (totalJokeList: Joke[] = []) => {

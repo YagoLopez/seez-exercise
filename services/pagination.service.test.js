@@ -93,7 +93,7 @@ const jokeList = [
   },
 ]
 
-const getJokesPerPage = PaginationService.getJokesByPage
+const getJokesPerPage = PaginationService.getJokesPerPage
 
 describe('Test jokes pagination', () => {
   describe('Case 1: total number of elements (9) is divisible by page size (3)', () => {
