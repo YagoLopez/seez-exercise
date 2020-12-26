@@ -37,7 +37,7 @@ Router.events.on('routeChangeStart', (url) => {
 Router.events.on('routeChangeComplete', () => NProgress.done())
 Router.events.on('routeChangeError', () => NProgress.done())
 
-export default function App({ Component, pageProps }) {
+export default function App({ Component: PageComponent, pageProps }) {
   return (
     <>
       <Head>
@@ -52,7 +52,7 @@ export default function App({ Component, pageProps }) {
         <link rel="dns-prefetch" href="https://api.chucknorris.io" />
       </Head>
       <AppContextProvider>
-        <Component {...pageProps} />
+        <PageComponent {...pageProps} />
       </AppContextProvider>
     </>
   )
