@@ -23,7 +23,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   }
 }
 
-export default function Terms({ data, pageNumber }) {
+export default function SearchTermsPage({ data, pageNumber }) {
   const { result } = data
   const totalPages = PaginationService.getNumberOfPages(result)
   if (!PaginationService.isPageNumberValid(pageNumber, totalPages))
