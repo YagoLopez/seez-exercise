@@ -10,7 +10,7 @@ export const NoResults = ({ message }) => {
   return (
     <Layout>
       <div className={css.centerHorVer}>
-        <p data-cy="no-results-msg">{message ?? CONST.PAGE_OUT_RANGE}</p>
+        <p data-cy="no-results-msg">{message ?? CONST.NO_RESULTS}</p>
         <div>
           <a href="#" onClick={onGoBack}>
             ⇦ Go Back

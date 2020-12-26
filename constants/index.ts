@@ -14,7 +14,7 @@ export const CONST = {
   JOKES_PER_PAGE: 10,
   JOKES_SEARCH_RESULT: 'Jokes Search Results',
   TITLE_INDEX: 'Chuck Norris Joke Search - Seez Exercise',
-  PAGE_OUT_RANGE: 'No results found for this request',
+  NO_RESULTS: 'No results found for this request',
   INPUT_SEARCH_HELP: 'Enter search terms',
   PAGE_HEAD_DEFAULT_DESCRIPTION: 'Search Chuck Norris Jokes',
   PAGE_HEAD_DEFAULT_KEYWORDS:

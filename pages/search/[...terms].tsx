@@ -1,3 +1,6 @@
+// todo: better use of layout
+// todo: create footer cmp for pagination btns
+// todo: input search term validation in browser
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'
