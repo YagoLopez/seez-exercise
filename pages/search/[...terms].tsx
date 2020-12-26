@@ -7,6 +7,7 @@
 // todo: add types to react hooks
 // todo: create fn to check for error or page out of range
 // todo: improve loader
+// todo: try to use rtl global variable only in _app.tsx
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'

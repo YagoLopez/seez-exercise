@@ -45,7 +45,7 @@ export class PaginationService {
     pageNumber: string,
     totalPages: number
   ): boolean => {
-    if (isNaN(parseInt(pageNumber))) return false
+    if (isNaN(+pageNumber)) return false
     return !(+pageNumber > totalPages || +pageNumber <= 0)
   }
 }
