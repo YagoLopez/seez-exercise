@@ -5,6 +5,7 @@
 // todo: add types to react hooks
 // todo: add go to first and goto last pagination btns
 // todo: throw exception in JokesRepository when error and return null or undefined
+// todo: link in title to root path
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'
