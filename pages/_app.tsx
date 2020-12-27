@@ -1,6 +1,5 @@
 import Router from 'next/router'
 import Head from 'next/head'
-import AppContextProvider from '../context/AppContextProvider'
 
 import '@material/button/dist/mdc.button.css'
 import '@material/ripple/dist/mdc.ripple.css'
@@ -34,6 +33,8 @@ import { useState } from 'react'
 
 export default function App({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false)
+  const [isRtl, setRtl] = useState(false)
+  const toggleRtl = () => setRtl(!isRtl)
 
   Router.events.on('routeChangeStart', (url: string) => setIsLoading(true))
   Router.events.on('routeChangeComplete', () => setIsLoading(false))
@@ -51,12 +52,10 @@ export default function App({ Component, pageProps }) {
         <link rel="preconnect" href="https://api.chucknorris.io" />
         <link rel="dns-prefetch" href="https://api.chucknorris.io" />
       </Head>
-      <AppContextProvider>
-        <Layout>
-          {isLoading && <LinearProgress />}
-          <Component {...pageProps} />
-        </Layout>
-      </AppContextProvider>
+      <Layout isRtl={isRtl} toggleRtl={toggleRtl}>
+        {isLoading && <LinearProgress />}
+        <Component {...pageProps} />
+      </Layout>
     </>
   )
 }

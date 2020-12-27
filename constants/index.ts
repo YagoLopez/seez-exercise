@@ -24,4 +24,6 @@ export const CONST = {
   PAGE_HEAD_OG_IMAGE: '',
   URL_YAGO_LOPEZ: 'https://yagolopez.js.org',
   URL_GITHUB_PROJECT: 'https://github.com/YagoLopez/seez-exercise',
+  DRAWER_TITLE: 'Chuck Norries Jokes',
+  DRAWER_SUBTITLE: 'Seez Exercise',
 }
