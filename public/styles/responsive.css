@@ -17,12 +17,13 @@ h2 {
   justify-content: center;
 
 }
+
 .mdc-top-app-bar {
-  background: darkblue;
+  background: black;
 }
 
 .mdc-button {
-  background: cornflowerblue !important;
+  background: darkblue !important;
 }
 
 @font-face {
