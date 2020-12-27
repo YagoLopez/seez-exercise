@@ -16,7 +16,6 @@ import { Button } from '@rmwc/button'
 
 export default function Layout({ children, isRtl, toggleRtl }) {
   const [openDrawer, setOpenDrawer] = useState(false)
-
   const onClickRandomJoke = () => {
     setOpenDrawer(!openDrawer)
   }
