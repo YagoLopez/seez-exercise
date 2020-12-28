@@ -1,5 +1,4 @@
 // todo: service worker icons
-// todo: input search term validation in browser
 // todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
 // todo: add types to react hooks
