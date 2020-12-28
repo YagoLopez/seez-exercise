@@ -16,7 +16,7 @@ import { Button } from '@rmwc/button'
 
 export default function Layout({ children, isRtl, toggleRtl }) {
   const [openDrawer, setOpenDrawer] = useState(false)
-  const onClickRandomJoke = () => {
+  const onClickJoke = () => {
     setOpenDrawer(!openDrawer)
   }
 
@@ -29,13 +29,13 @@ export default function Layout({ children, isRtl, toggleRtl }) {
         </DrawerHeader>
         <DrawerContent>
           <List>
-            <ListItem onClick={onClickRandomJoke}>
+            <ListItem onClick={onClickJoke}>
               <Icon icon="search" className={styles.icon_color} />
               <Link href="/">
                 <a className={styles.menu_item}>Search</a>
               </Link>
             </ListItem>
-            <ListItem onClick={onClickRandomJoke}>
+            <ListItem onClick={onClickJoke}>
               <Icon icon="exit_to_app" className={styles.icon_color} />
               <Link href="/random/[]">
                 <a className={styles.menu_item}>Get Random Jokes</a>
@@ -50,7 +50,7 @@ export default function Layout({ children, isRtl, toggleRtl }) {
                 <Button onClick={toggleRtl} label="Change to RTL" raised />
               )}
             </DrawerHeader>
-            <ListItem onClick={onClickRandomJoke}>
+            <ListItem onClick={onClickJoke}>
               <span className={styles.menu_item}>Close Drawer</span>
             </ListItem>
           </List>

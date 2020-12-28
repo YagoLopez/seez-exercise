@@ -27,4 +27,5 @@ export const CONST = {
   URL_GITHUB_PROJECT: 'https://github.com/YagoLopez/seez-exercise',
   DRAWER_TITLE: 'Chuck Norries Jokes',
   DRAWER_SUBTITLE: 'Seez Exercise',
+  INPUT_SEARCH_VALIDATION: '⛔ Search term must have at least three characters',
 }

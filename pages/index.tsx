@@ -14,16 +14,32 @@ import JokesRepository from '../services/jokes.repository'
 export default function Index() {
   const router = useRouter()
   const [searchterm, setSearchterm] = useState('')
+  const [isInvalidForm, setIsInvalidForm] = useState(false)
+  const onClearSearch = () => {
+    setIsInvalidForm(false)
+    setSearchterm('')
+  }
+  const isValidSearchTerm = (searchTerm: string) => searchTerm?.length > 2
+
+  const onChangeSearchText = (e: ChangeEvent<HTMLInputElement>) => {
+    const searchTerm = e.target.value
+    setSearchterm(searchTerm)
+    isValidSearchTerm(searchTerm)
+      ? setIsInvalidForm(false)
+      : setIsInvalidForm(true)
+  }
 
   const onSearchJoke = (evt: FormEvent) => {
     let searchUrl = ''
     evt.preventDefault()
     searchterm.trim()
-    if (searchterm?.length > 0) {
+    if (searchterm?.length > 2) {
       router.push(`/search/${searchterm}`)
     }
+    if (searchterm?.length < 2 && searchterm?.length > 0) {
+      setIsInvalidForm(true)
+    }
   }
-
   return (
     <>
       <PageHead title={CONST.TITLE_INDEX} />
@@ -42,17 +58,21 @@ export default function Index() {
             </div>
             <TextField
               icon="search"
+              invalid={isInvalidForm}
               value={searchterm}
-              onChange={(e: ChangeEvent<HTMLInputElement>) =>
-                setSearchterm(e.target.value)
-              }
+              onChange={onChangeSearchText}
               label={CONST.INPUT_SEARCH_PLACEHOLDER}
               trailingIcon={{
                 icon: 'close',
                 tabIndex: 0,
-                onClick: () => setSearchterm(''),
+                onClick: onClearSearch,
               }}
             />
+            {isInvalidForm && (
+              <div className={css.validationError}>
+                {CONST.INPUT_SEARCH_VALIDATION}
+              </div>
+            )}
             <div className={css.submitBtn}>
               <Button
                 label="Search"

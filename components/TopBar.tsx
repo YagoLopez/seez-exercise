@@ -9,6 +9,7 @@ import {
 } from '@rmwc/top-app-bar'
 import { IconButton } from '@rmwc/icon-button'
 import { useRouter } from 'next/router'
+import css from '../public/styles/global.module.css'
 
 interface TopBarProps {
   title?: string
@@ -36,7 +37,13 @@ export const TopBar = ({
               icon="menu"
               onClick={() => setOpenDrawer(!openDrawer)}
             />
-            <TopAppBarTitle>{title}</TopAppBarTitle>
+            <TopAppBarTitle>
+              <span
+                onClick={() => router.push('/')}
+                className={css.appBarTitle}>
+                {title}
+              </span>
+            </TopAppBarTitle>
           </TopAppBarSection>
           {showHomeBtn && (
             <TopAppBarSection alignEnd>

@@ -85,3 +85,17 @@
   padding-top: 20vh;
   padding-bottom: 10vh;
 }
+
+.validationError {
+  color: red;
+  background: lightyellow;
+  border-color: red;
+  border-style: dashed;
+  border-bottom-width: 1px;
+  padding: 10px;
+  border-radius: 6px;
+  width: 256px;
+  display: flex;
+  font-size: 12px;
+  margin: 20px auto auto;
+}

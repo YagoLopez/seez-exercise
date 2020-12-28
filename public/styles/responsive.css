@@ -11,6 +11,13 @@ a:hover {
   text-decoration: underline;
 }
 
+#appBarTitle {
+  color: white;
+  font-size: 22px;
+  text-decoration: none;
+  cursor: pointer;
+}
+
 h2 {
   padding-left: 0;
   display: flex;
