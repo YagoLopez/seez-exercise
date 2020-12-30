@@ -46,9 +46,13 @@ export default function App({ Component, pageProps }) {
         <meta name="viewport" content="width=device-width, initial-scale=1" />
         <meta name="theme-color" content="#317EFB" />
         <link rel="manifest" href="/manifest.json" />
-        <link rel="icon" type="image/svg+xml" href="favicon.svg" />
-        <link rel="apple-touch-icon" sizes="144x144" href="favicon.svg" />
-        <link rel="mask-icon" href="favicon.svg" color="#000000" />
+        <link rel="icon" type="image/svg+xml" href="/icons/favicon.svg" />
+        <link
+          rel="apple-touch-icon"
+          sizes="144x144"
+          href="/icons/favicon.svg"
+        />
+        <link rel="mask-icon" href="/icons/favicon.svg" color="#000000" />
         <link rel="preconnect" href="https://api.chucknorris.io" />
         <link rel="dns-prefetch" href="https://api.chucknorris.io" />
       </Head>

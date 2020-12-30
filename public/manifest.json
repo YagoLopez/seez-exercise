@@ -3,9 +3,14 @@
   "name": "Seez Exercise",
   "icons": [
     {
-      "src": "favicon.svg",
-      "sizes": "144x144",
+      "src": "icons/favicon.svg",
+      "sizes": "256x256",
       "type": "image/svg"
+    },
+    {
+      "src": "icons/favicon-512x512.png",
+      "sizes": "512x512",
+      "type": "image/png"
     }
   ],
   "start_url": "/",

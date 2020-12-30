@@ -1,4 +1,3 @@
-// todo: service worker icons and fix icon size
 // todo: try to avoid /random/[] brackets
 // todo: improve lighthouse score in /random/[] route
 // todo: fetch categories only once in / or _app.jsx and save it in global state
