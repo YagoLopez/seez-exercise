@@ -3,12 +3,13 @@ import { GetServerSideProps } from 'next'
 import * as ErrorService from '../../services/errors.service'
 import React, { FormEvent, useState } from 'react'
 import JokeErrorCmp from '../../components/JokeErrorCmp'
-import { ENDPOINTS } from '../../constants'
+import { CONST, ENDPOINTS } from '../../constants'
 import { Select } from '@rmwc/select'
 import { Button } from '@rmwc/button'
 import css from '../../public/styles/global.module.css'
 import { useRouter } from 'next/router'
 import JokeListItem from '../../components/joke-list-item/JokeListItem'
+import PageHead from '../../components/PageHead'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { category } = context.query
@@ -47,25 +48,27 @@ export default function Random({ data, categories }) {
     }
   }
   return (
-    <form onSubmit={onSearchRandomJoke}>
-      <Select
-        label="Categories"
-        icon="input"
-        options={categories}
-        value={selectedCategory}
-        onChange={(evt) => onSelectCategory(evt)}
-      />
-      <section className={css.jokeItemContainer}>
-        <JokeListItem item={data} />
-      </section>
-      <div className={css.paginationCentered}>
-        <Button
-          label="Get New Joke"
-          theme={['secondaryBg', 'onSecondary']}
-          raised
-          type="submit"
-        />
-      </div>
-    </form>
+    <>
+      <PageHead title={CONST.RANDOM_JOKES_TITLE} />
+      <form onSubmit={onSearchRandomJoke}>
+        <label>
+          <Select
+            label="Categories"
+            icon="input"
+            options={categories}
+            value={selectedCategory}
+            onChange={(evt) => onSelectCategory(evt)}
+          />
+        </label>
+        <section className={css.jokeItemContainer}>
+          <JokeListItem item={data} />
+        </section>
+        <div className={css.paginationCentered}>
+          <Button theme={['secondaryBg', 'onSecondary']} raised type="submit">
+            Get New Joke
+          </Button>
+        </div>
+      </form>
+    </>
   )
 }

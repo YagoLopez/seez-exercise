@@ -13,6 +13,7 @@ export const CONST = {
   INPUT_SEARCH_PLACEHOLDER: 'Search Terms',
   JOKES_PER_PAGE: 10,
   JOKES_SEARCH_RESULT: 'Search Results',
+  RANDOM_JOKES_TITLE: 'Random Jokes',
   TITLE_INDEX: 'Chuck Norris Joke Search - Seez Exercise',
   SEARCH_FORM_TITLE: '🤠 Search for Chuck Norris Jokes',
   SEARCH_RESULT_LIST_TITLE: 'Search Results for ',
