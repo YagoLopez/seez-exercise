@@ -1,4 +1,5 @@
 // todo: service worker icons
+// todo: fetch categories only once in / or _app.jsx and save it in global state
 // todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
 // todo: add types to react hooks
@@ -7,6 +8,7 @@
 // todo: link in title to root path
 // todo: try to remove workbox
 // todo: /random/ route should not give 404 error. Do not use /random/[]
+// todo: use SWR in JokesRepository to get cached results
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINTS } from '../../constants'
 import PageHead from '../../components/PageHead'
@@ -38,7 +40,6 @@ export default function SearchTermsPage({ data, pageNumber, searchTerm }) {
   if (!isThereResults(data, pageNumber, totalPages)) {
     return <NoResults message={data.message} />
   }
-
   const [currentPage, setCurrentPage] = useState(+pageNumber)
   const [jokeList, setJokeList] = useState(
     PaginationService.getJokesPerPage(result, currentPage, CONST.JOKES_PER_PAGE)
@@ -58,7 +59,6 @@ export default function SearchTermsPage({ data, pageNumber, searchTerm }) {
     setCurrentPage(+currentPage + delta)
     setJokeList(nextPageJokeList)
   }
-
   const paginationData = {
     isFirstPage,
     isLastPage,
@@ -67,7 +67,6 @@ export default function SearchTermsPage({ data, pageNumber, searchTerm }) {
     totalPages,
     totalJokes: result,
   }
-
   return (
     <>
       <PageHead title={CONST.JOKES_SEARCH_RESULT} />
