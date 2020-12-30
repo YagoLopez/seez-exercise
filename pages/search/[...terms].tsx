@@ -1,5 +1,6 @@
-// todo: move goNextPrevPage() to PaginationService
-// todo: service worker icons
+// todo: service worker icons and fix icon size
+// todo: try to avoid /random/[] brackets
+// todo: improve lighthouse score in /random/[] route
 // todo: fetch categories only once in / or _app.jsx and save it in global state
 // todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
