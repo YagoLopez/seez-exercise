@@ -29,6 +29,10 @@ h2 {
   background: black;
 }
 
+.mdc-top-app-bar__title {
+  cursor: pointer;
+}
+
 .mdc-button {
   background: darkblue !important;
 }
