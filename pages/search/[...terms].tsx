@@ -12,6 +12,7 @@
 // todo: try to remove workbox
 // todo: /random/ route should not give 404 error. Do not use /random/[]
 // todo: use SWR in JokesRepository to get cached results
+// todo: check svg in index.tsx
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINT } from '../../constants'
 import PageHead from '../../components/PageHead'
