@@ -3,7 +3,7 @@ import { GetServerSideProps } from 'next'
 import * as ErrorService from '../../services/errors.service'
 import React, { FormEvent, useState } from 'react'
 import JokeErrorCmp from '../../components/JokeErrorCmp'
-import { CONST, ENDPOINTS } from '../../constants'
+import { CONST, ENDPOINT } from '../../constants'
 import { Select } from '@rmwc/select'
 import { Button } from '@rmwc/button'
 import css from '../../public/styles/global.module.css'
@@ -15,13 +15,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   const { category } = context.query
   let data
   if (category === '[]' || category === '') {
-    data = await JokesRepository.getData(`${ENDPOINTS.RANDOM_JOKES}`)
+    data = await JokesRepository.getData(`${ENDPOINT.RANDOM_JOKES}`)
   } else {
     data = await JokesRepository.getData(
-      `${ENDPOINTS.RANDOM_JOKES_BY_CATEGORY}${category}`
+      `${ENDPOINT.RANDOM_JOKES_BY_CATEGORY}${category}`
     )
   }
-  const categories = await JokesRepository.getData(`${ENDPOINTS.CATEGORIES}`)
+  const categories = await JokesRepository.getData(`${ENDPOINT.CATEGORIES}`)
   return {
     props: { data, categories },
   }

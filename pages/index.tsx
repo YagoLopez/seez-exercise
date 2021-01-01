@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
-import { CONST, ENDPOINTS } from '../constants'
+import { CONST, ENDPOINT } from '../constants'
 import { LinearProgress } from '@rmwc/linear-progress'
 import { Typography } from '@rmwc/typography'
 import { TextField } from '@rmwc/textfield'
