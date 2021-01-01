@@ -29,16 +29,28 @@ import '@material/switch/dist/mdc.switch.css'
 import '../public/styles/responsive.css'
 import Layout from '../components/layout/Layout'
 import { LinearProgress } from '@rmwc/linear-progress'
-import { useState } from 'react'
+import { useEffect, useState } from 'react'
+import JokesRepository from '../services/jokes.repository'
+import { ENDPOINT } from '../constants'
 
 export default function App({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false)
   const [isRtl, setRtl] = useState(false)
+  const [categories, setCategories] = useState([])
   const toggleRtl = () => setRtl(!isRtl)
 
-  Router.events.on('routeChangeStart', (url: string) => setIsLoading(true))
-  Router.events.on('routeChangeComplete', () => setIsLoading(false))
-  Router.events.on('routeChangeError', () => setIsLoading(false))
+  useEffect(() => {
+    const getCategories = async () => {
+      const categoriesData = await JokesRepository.getData(
+        `${ENDPOINT.CATEGORIES}`
+      )
+      setCategories(categoriesData)
+    }
+    getCategories()
+    Router.events.on('routeChangeStart', (url: string) => setIsLoading(true))
+    Router.events.on('routeChangeComplete', () => setIsLoading(false))
+    Router.events.on('routeChangeError', () => setIsLoading(false))
+  }, [])
 
   return (
     <>
@@ -58,7 +70,7 @@ export default function App({ Component, pageProps }) {
       </Head>
       <Layout isRtl={isRtl} toggleRtl={toggleRtl}>
         {isLoading && <LinearProgress />}
-        <Component {...pageProps} />
+        <Component {...pageProps} categories={categories} />
       </Layout>
     </>
   )

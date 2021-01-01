@@ -1,3 +1,5 @@
+// todo: unify state management in _app.tsx
+// todo: use reactMemo https://reactjs.org/docs/react-api.html#reactmemo
 // todo: try to avoid /random/[] brackets
 // todo: improve lighthouse score in /random/[] route
 // todo: fetch categories only once in / or _app.jsx and save it in global state
@@ -10,8 +12,9 @@
 // todo: try to remove workbox
 // todo: /random/ route should not give 404 error. Do not use /random/[]
 // todo: use SWR in JokesRepository to get cached results
+// todo: check svg in index.tsx
 import { NoResults } from '../../components/NoResults'
-import { CONST, ENDPOINTS } from '../../constants'
+import { CONST, ENDPOINT } from '../../constants'
 import PageHead from '../../components/PageHead'
 import JokesRepository from '../../services/jokes.repository'
 import { GetServerSideProps } from 'next'
@@ -24,7 +27,7 @@ import PaginationFooter from '../../components/PaginationFooter'
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { terms } = context.query
   const data = await JokesRepository.getData(
-    `${ENDPOINTS.SEARCH_JOKES}${terms[0]}`
+    `${ENDPOINT.SEARCH_JOKES}${terms[0]}`
   )
   return {
     props: {

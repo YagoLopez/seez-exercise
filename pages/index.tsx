@@ -1,6 +1,6 @@
 import { ChangeEvent, FormEvent, useState } from 'react'
 import { useRouter } from 'next/router'
-import { CONST, ENDPOINTS } from '../constants'
+import { CONST, ENDPOINT } from '../constants'
 import { LinearProgress } from '@rmwc/linear-progress'
 import { Typography } from '@rmwc/typography'
 import { TextField } from '@rmwc/textfield'
@@ -9,7 +9,6 @@ import css from '../public/styles/global.module.css'
 import PageHead from '../components/PageHead'
 import Layout from '../components/layout/Layout'
 import { GetStaticProps } from 'next'
-import JokesRepository from '../services/jokes.repository'
 
 export default function Index() {
   const router = useRouter()

@@ -10,7 +10,7 @@ export default class JokesRepository {
    * Utiliy function to fetch data from endpoint
    * @param endpoint url
    */
-  static getData = async (endpoint: string): Promise<Response> => {
+  static getData = async (endpoint: string): Promise<object[]> => {
     try {
       const response = await fetch(endpoint)
       return await response.json()
