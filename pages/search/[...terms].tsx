@@ -1,3 +1,4 @@
+// todo: unify state management in _app.tsx
 // todo: use reactMemo https://reactjs.org/docs/react-api.html#reactmemo
 // todo: try to avoid /random/[] brackets
 // todo: improve lighthouse score in /random/[] route

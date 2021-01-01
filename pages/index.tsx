@@ -9,7 +9,6 @@ import css from '../public/styles/global.module.css'
 import PageHead from '../components/PageHead'
 import Layout from '../components/layout/Layout'
 import { GetStaticProps } from 'next'
-import JokesRepository from '../services/jokes.repository'
 
 export default function Index() {
   const router = useRouter()

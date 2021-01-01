@@ -21,9 +21,8 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
       `${ENDPOINT.RANDOM_JOKES_BY_CATEGORY}${category}`
     )
   }
-  const categories = await JokesRepository.getData(`${ENDPOINT.CATEGORIES}`)
   return {
-    props: { data, categories },
+    props: { data },
   }
 }
 
@@ -57,7 +56,7 @@ export default function Random({ data, categories }) {
             icon="input"
             options={categories}
             value={selectedCategory}
-            onChange={(evt) => onSelectCategory(evt)}
+            onChange={onSelectCategory}
           />
         </label>
         <section className={css.jokeItemContainer}>
