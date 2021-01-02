@@ -1,11 +1,9 @@
 // todo: unify state management in _app.tsx
 // todo: use reactMemo https://reactjs.org/docs/react-api.html#reactmemo
 // todo: improve lighthouse score in /random/[] route
-// todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
 // todo: add types to react hooks
 // todo: add go to first and goto last pagination btns
-// todo: throw exception in JokesRepository when error and return null or undefined
 // todo: try to remove workbox
 // todo: use SWR in JokesRepository to get cached results
 // todo: check svg in index.tsx
