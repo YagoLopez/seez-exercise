@@ -42,10 +42,10 @@ export class PaginationService {
   }
 
   static isPageNumberValid = (
-    pageNumber: string,
+    pageNumber: number,
     totalPages: number
   ): boolean => {
-    if (isNaN(+pageNumber)) return false
-    return +pageNumber < totalPages || +pageNumber <= 0
+    if (isNaN(pageNumber)) return false
+    return pageNumber <= totalPages && pageNumber > 0
   }
 }

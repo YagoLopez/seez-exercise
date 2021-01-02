@@ -13,6 +13,7 @@
 // todo: /random/ route should not give 404 error. Do not use /random/[]
 // todo: use SWR in JokesRepository to get cached results
 // todo: check svg in index.tsx
+// todo: e2e random jokes
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINT } from '../../constants'
 import PageHead from '../../components/PageHead'
@@ -23,6 +24,7 @@ import { useState } from 'react'
 import { PaginationService } from '../../services/pagination.service'
 import { isThereResults } from '../../services/errors.service'
 import PaginationFooter from '../../components/PaginationFooter'
+import { useRouter } from 'next/router'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { terms } = context.query
@@ -32,18 +34,19 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       data,
-      pageNumber: terms[1] ? terms[1] : 1,
       searchTerm: terms[0],
+      pageNumber: terms[1] ? terms[1] : 1,
     },
   }
 }
 
-export default function SearchTermsPage({ data, pageNumber, searchTerm }) {
+export default function SearchTermsPage({ data, searchTerm, pageNumber }) {
   const { result } = data
   const totalPages = PaginationService.getNumberOfPages(result)
-  if (!isThereResults(data, pageNumber, totalPages)) {
+  if (!isThereResults(data, +pageNumber, totalPages)) {
     return <NoResults message={data.message} />
   }
+  const router = useRouter()
   const [currentPage, setCurrentPage] = useState(+pageNumber)
   const [jokeList, setJokeList] = useState(
     PaginationService.getJokesPerPage(result, currentPage, CONST.JOKES_PER_PAGE)
@@ -55,13 +58,16 @@ export default function SearchTermsPage({ data, pageNumber, searchTerm }) {
     CONST.JOKES_PER_PAGE
   )
   const goNextPrevPage = (delta: number) => {
-    const nextPageJokeList = PaginationService.getJokesPerPage(
+    const nextPageNumber = +currentPage + delta
+    const nextPageJokesList = PaginationService.getJokesPerPage(
       result,
-      currentPage + delta,
+      nextPageNumber,
       CONST.JOKES_PER_PAGE
     )
-    setCurrentPage(+currentPage + delta)
-    setJokeList(nextPageJokeList)
+    setCurrentPage(nextPageNumber)
+    setJokeList(nextPageJokesList)
+    const paginatedSearchRoute = `/search/${searchTerm}/${nextPageNumber}`
+    router.push(paginatedSearchRoute, undefined, { shallow: true })
   }
   const paginationData = {
     isFirstPage,

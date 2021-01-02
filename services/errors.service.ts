@@ -10,8 +10,13 @@ export const printJson = (jsonData: object) => JSON.stringify(jsonData, null, 2)
 
 export const isThereResults = (
   jokeData: Joke & JokeError,
-  pageNumber: string,
+  pageNumber: number,
   totalPages: number
-): boolean =>
-  !isError(jokeData) &&
-  PaginationService.isPageNumberValid(pageNumber, totalPages)
+): boolean => {
+  const isErrorData = isError(jokeData)
+  const isPageNumberValid = PaginationService.isPageNumberValid(
+    pageNumber,
+    totalPages
+  )
+  return !isErrorData && isPageNumberValid
+}
