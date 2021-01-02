@@ -1,16 +1,12 @@
 // todo: unify state management in _app.tsx
 // todo: use reactMemo https://reactjs.org/docs/react-api.html#reactmemo
-// todo: try to avoid /random/[] brackets
 // todo: improve lighthouse score in /random/[] route
-// todo: fetch categories only once in / or _app.jsx and save it in global state
 // todo: use error boundaries to catch errors in _app.jsx
 // todo: improve lighthouse accesibility score
 // todo: add types to react hooks
 // todo: add go to first and goto last pagination btns
 // todo: throw exception in JokesRepository when error and return null or undefined
-// todo: link in title to root path
 // todo: try to remove workbox
-// todo: /random/ route should not give 404 error. Do not use /random/[]
 // todo: use SWR in JokesRepository to get cached results
 // todo: check svg in index.tsx
 // todo: e2e random jokes
