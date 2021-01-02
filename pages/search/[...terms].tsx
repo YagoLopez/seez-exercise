@@ -28,23 +28,23 @@ import { useRouter } from 'next/router'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { terms } = context.query
-  const data = await JokesRepository.getData(
+  const JokesData = await JokesRepository.getData(
     `${ENDPOINT.SEARCH_JOKES}${terms[0]}`
   )
   return {
     props: {
-      data,
+      JokesData,
       searchTerm: terms[0],
       pageNumber: terms[1] ? terms[1] : 1,
     },
   }
 }
 
-export default function SearchTermsPage({ data, searchTerm, pageNumber }) {
-  const { result } = data
+export default function SearchTermsPage({ JokesData, searchTerm, pageNumber }) {
+  const { result } = JokesData
   const totalPages = PaginationService.getNumberOfPages(result)
-  if (!isThereResults(data, +pageNumber, totalPages)) {
-    return <NoResults message={data.message} />
+  if (!isThereResults(JokesData, +pageNumber, totalPages)) {
+    return <NoResults message={JokesData.message} />
   }
   const router = useRouter()
   const [currentPage, setCurrentPage] = useState(+pageNumber)
