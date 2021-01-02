@@ -66,6 +66,10 @@
   padding: 10px;
 }
 
+.textAlignCenter {
+  text-align: center;
+}
+
 .link {
   font-family: monospace;
   font-size: small;
