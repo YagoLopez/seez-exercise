@@ -15,7 +15,6 @@ export default class JokesRepository {
       const response = await fetch(endpoint)
       return await response.json()
     } catch (exception) {
-      console.log(exception)
       return { message: exception.message, error: exception.message }
     }
   }
