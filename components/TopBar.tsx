@@ -9,7 +9,6 @@ import {
 } from '@rmwc/top-app-bar'
 import { IconButton } from '@rmwc/icon-button'
 import { useRouter } from 'next/router'
-import css from '../public/styles/global.module.css'
 
 interface TopBarProps {
   title?: string
@@ -38,9 +37,7 @@ export const TopBar = ({
               onClick={() => setOpenDrawer(!openDrawer)}
             />
             <TopAppBarTitle>
-              <span
-                onClick={() => router.push('/')}
-                className={css.appBarTitle}>
+              <span title="Go to Start Page" onClick={() => router.push('/')}>
                 {title}
               </span>
             </TopAppBarTitle>

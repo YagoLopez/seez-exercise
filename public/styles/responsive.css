@@ -11,18 +11,10 @@ a:hover {
   text-decoration: underline;
 }
 
-#appBarTitle {
-  color: white;
-  font-size: 22px;
-  text-decoration: none;
-  cursor: pointer;
-}
-
 h2 {
   padding-left: 0;
   display: flex;
   justify-content: center;
-
 }
 
 .mdc-top-app-bar {
@@ -31,6 +23,10 @@ h2 {
 
 .mdc-top-app-bar__title {
   cursor: pointer;
+}
+
+.mdc-top-app-bar__title:hover {
+  color: lightcyan;
 }
 
 .mdc-button {

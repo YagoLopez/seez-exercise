@@ -42,7 +42,7 @@ export default function Layout({ children, isRtl, toggleRtl }) {
               </Link>
             </ListItem>
             <DrawerHeader>
-              <DrawerSubtitle>Text Direction:</DrawerSubtitle>
+              <DrawerSubtitle>Text Direction</DrawerSubtitle>
               <br />
               {isRtl ? (
                 <Button onClick={toggleRtl} label="Change to LTR" raised />

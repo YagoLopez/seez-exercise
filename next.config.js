@@ -1,7 +1,7 @@
 const withPWA = require('next-pwa')
 const { PHASE_PRODUCTION_BUILD } = require('next/constants')
 
-// If compile phase is production build then create PWA infrastructure
+// If compile phase is production-build then create PWA infrastructure
 module.exports = (phase) => {
   if (phase === PHASE_PRODUCTION_BUILD) {
     return withPWA({
