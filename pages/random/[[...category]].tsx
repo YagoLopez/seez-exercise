@@ -13,14 +13,11 @@ import PageHead from '../../components/PageHead'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { category } = context.query
-  let data
-  if (category === '[]' || category === '') {
-    data = await JokesRepository.getData(`${ENDPOINT.RANDOM_JOKES}`)
-  } else {
-    data = await JokesRepository.getData(
-      `${ENDPOINT.RANDOM_JOKES_BY_CATEGORY}${category}`
-    )
-  }
+  const data = category
+    ? await JokesRepository.getData(
+        `${ENDPOINT.RANDOM_JOKES_BY_CATEGORY}${category}`
+      )
+    : await JokesRepository.getData(`${ENDPOINT.RANDOM_JOKES}`)
   return {
     props: { data },
   }
@@ -40,10 +37,10 @@ export default function Random({ data, categories }) {
 
   const onSearchRandomJoke = (evt: FormEvent) => {
     evt.preventDefault()
-    if (selectedCategory !== '[]' && selectedCategory !== '') {
+    if (selectedCategory) {
       router.push(`/random/${selectedCategory}`)
     } else {
-      router.push(`/random/[]`)
+      router.push(`/random`)
     }
   }
   return (

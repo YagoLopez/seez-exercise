@@ -37,7 +37,7 @@ export default function Layout({ children, isRtl, toggleRtl }) {
             </ListItem>
             <ListItem onClick={onClickJoke}>
               <Icon icon="exit_to_app" className={styles.icon_color} />
-              <Link href="/random/[]">
+              <Link href="/random">
                 <a className={styles.menu_item}>Get Random Jokes</a>
               </Link>
             </ListItem>
