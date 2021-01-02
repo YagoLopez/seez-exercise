@@ -10,6 +10,7 @@
 // todo: use SWR in JokesRepository to get cached results
 // todo: check svg in index.tsx
 // todo: e2e random jokes
+// todo: use absolute imports and module path aliases
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINT } from '../../constants'
 import PageHead from '../../components/PageHead'
