@@ -32,11 +32,12 @@ import { LinearProgress } from '@rmwc/linear-progress'
 import { useEffect, useState } from 'react'
 import JokesRepository from '../services/jokes.repository'
 import { ENDPOINT } from '../constants'
+import JokeError from '../models/JokeError'
 
 export default function App({ Component, pageProps }) {
   const [isLoading, setIsLoading] = useState(false)
   const [isRtl, setRtl] = useState(false)
-  const [categories, setCategories] = useState([])
+  const [categories, setCategories] = useState<object[] | JokeError>([])
   const toggleRtl = () => setRtl(!isRtl)
 
   useEffect(() => {

@@ -44,7 +44,7 @@ export const TopBar = ({
           </TopAppBarSection>
           {showHomeBtn && (
             <TopAppBarSection alignEnd>
-              <Link href="/">
+              <Link href="/" shallow={true}>
                 <a title="Return to Home Page">
                   <TopAppBarActionItem icon="home" />
                 </a>

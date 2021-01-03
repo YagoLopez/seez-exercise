@@ -2,7 +2,6 @@ import JokesRepository from '../../services/jokes.repository'
 import { GetServerSideProps } from 'next'
 import * as ErrorService from '../../services/errors.service'
 import React, { FormEvent, useState } from 'react'
-import JokeErrorCmp from '../../components/JokeErrorCmp'
 import { CONST, ENDPOINT } from '../../constants'
 import { Select } from '@rmwc/select'
 import { Button } from '@rmwc/button'
@@ -10,6 +9,7 @@ import css from '../../public/styles/global.module.css'
 import { useRouter } from 'next/router'
 import JokeListItem from '../../components/joke-list-item/JokeListItem'
 import PageHead from '../../components/PageHead'
+import { NoResults } from '../../components/NoResults'
 
 export const getServerSideProps: GetServerSideProps = async (context) => {
   const { category } = context.query
@@ -24,8 +24,7 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
 }
 
 export default function Random({ data, categories }) {
-  if (ErrorService.isError(data)) return <JokeErrorCmp data={data} />
-
+  if (ErrorService.isError(data)) return <NoResults message={data.message} />
   const [selectedCategory, setCategory] = useState('')
   const router = useRouter()
 

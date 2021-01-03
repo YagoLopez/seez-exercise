@@ -6,7 +6,7 @@ export default interface JokeError {
   timestamp?: string
   status?: string
   error?: string
-  message: string
+  message?: string
   path?: string
   type?: string
   errno?: string
