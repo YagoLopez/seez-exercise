@@ -4,7 +4,6 @@
 // todo: improve lighthouse accesibility score
 // todo: add types to react hooks
 // todo: add go to first and goto last pagination btns
-// todo: try to remove workbox
 // todo: use SWR in JokesRepository to get cached results
 // todo: check svg in index.tsx
 // todo: e2e random jokes
