@@ -9,6 +9,7 @@
 // todo: e2e random jokes
 // todo: use absolute imports and module path aliases
 // todo: feature: add to favorites
+// todo: use rmwc not importing styles in _app.tsx
 import { NoResults } from '../../components/NoResults'
 import { CONST, ENDPOINT } from '../../constants'
 import PageHead from '../../components/PageHead'
@@ -29,13 +30,13 @@ export const getServerSideProps: GetServerSideProps = async (context) => {
   return {
     props: {
       JokesData,
-      searchTerm: terms[0],
+      searchString: terms[0],
       pageNumber: terms[1] ? terms[1] : 1,
     },
   }
 }
 
-export default function SearchTermsPage({ JokesData, searchTerm, pageNumber }) {
+export default function SearchTermsPage({ JokesData, searchString, pageNumber }) {
   const { result } = JokesData
   const totalPages = PaginationService.getNumberOfPages(result)
   if (!isThereResults(JokesData, +pageNumber, totalPages)) {
@@ -61,7 +62,7 @@ export default function SearchTermsPage({ JokesData, searchTerm, pageNumber }) {
     )
     setCurrentPage(nextPageNumber)
     setJokeList(nextPageJokesList)
-    const paginatedSearchRoute = `/search/${searchTerm}/${nextPageNumber}`
+    const paginatedSearchRoute = `/search/${searchString}/${nextPageNumber}`
     router.push(paginatedSearchRoute, undefined, { shallow: true })
   }
   const paginationData = {
@@ -75,7 +76,7 @@ export default function SearchTermsPage({ JokesData, searchTerm, pageNumber }) {
   return (
     <>
       <PageHead title={CONST.JOKES_SEARCH_RESULT} />
-      <JokeList list={jokeList} search={searchTerm} />
+      <JokeList list={jokeList} search={searchString} />
       <PaginationFooter paginationData={paginationData} />
     </>
   )
