@@ -46,7 +46,14 @@ export default function Index() {
         <main className={css.centerHor}>
           <label>
             <div className={css.blockText}>
-              <div>
+              <div style={{ display: 'flex', alignItems: 'center' }}>
+                <img
+                  src="/icons/favicon.svg"
+                  alt="logo"
+                  style={{ padding: '5px' }}
+                  width="23"
+                  height="23"
+                />
                 <Typography use="headline6">
                   {CONST.SEARCH_FORM_TITLE}
                 </Typography>

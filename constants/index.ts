@@ -15,7 +15,7 @@ export const CONST = {
   JOKES_SEARCH_RESULT: 'Search Results',
   RANDOM_JOKES_TITLE: 'Random Jokes',
   TITLE_INDEX: 'Chuck Norris Joke Search - Seez Exercise',
-  SEARCH_FORM_TITLE: '🤠 Search for Chuck Norris Jokes',
+  SEARCH_FORM_TITLE: 'Search for Chuck Norris Jokes',
   SEARCH_RESULT_LIST_TITLE: 'Search Results for ',
   NO_RESULTS: 'No results found for this request',
   INPUT_SEARCH_HELP: 'Enter search terms',
